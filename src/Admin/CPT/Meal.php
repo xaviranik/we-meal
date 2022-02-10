@@ -11,8 +11,8 @@ class Meal extends CustomPostType {
 		* The $labels describes how the post type appears.
 		*/
 		$labels = array(
-			'name'          => 'Products', // Plural name
-			'singular_name' => 'Product',   // Singular name
+			'name'          => 'Meals', // Plural name
+			'singular_name' => 'Meal',   // Singular name
 		);
 
 		/*
@@ -53,6 +53,6 @@ class Meal extends CustomPostType {
 			'capability_type'     => 'post', // Allows read, edit, delete like “Post”
 		);
 
-		register_post_type( 'product', $args );
+		register_post_type( 'meal', $args );
 	}
 }
