@@ -12,6 +12,79 @@ use PhpKnight\WeMeal\Core\Interfaces\HookableInterface;
 class Menu implements HookableInterface {
 
 	/**
+	 * Menu page title.
+	 *
+	 * @var string
+	 */
+	protected $page_title;
+
+	/**
+	 * Menu page title.
+	 *
+	 * @var string
+	 */
+	protected $menu_title;
+
+	/**
+	 * Menu page capability.
+	 *
+	 * @var string
+	 */
+	protected $capability;
+
+	/**
+	 * Menu page slug.
+	 *
+	 * @var string
+	 */
+	protected $menu_slug;
+
+	/**
+	 * Menu page icon url.
+	 *
+	 * @var string
+	 */
+	protected $icon;
+
+	/**
+	 * Menu page position.
+	 *
+	 * @var int
+	 */
+	protected $position;
+
+	/**
+	 * Submenu pages.
+	 *
+	 * @var array
+	 */
+	protected $submenus;
+
+	/**
+	 * Constructor.
+	 *
+	 * @since 1.0.0
+	 */
+	public function __construct() {
+		$this->page_title = __( 'weMeal', 'we-meal' );
+		$this->menu_title = __( 'weMeal', 'we-meal' );
+		$this->capability = 'manage_options';
+		$this->menu_slug  = 'we-meal';
+		$this->icon       = 'dashicons-food';
+		$this->position   = 57;
+		$this->submenus   = [
+			[
+				'parent_slug' => 'we-meal',
+				'page_title'  => __( 'Dashboard', 'we-meal' ),
+				'menu_title'  => __( 'Dashboard', 'we-meal' ),
+				'capability'  => 'manage_options',
+				'menu_slug'   => 'we-meal',
+				'callback'    => [ $this, 'render_menu_page' ],
+			],
+		];
+	}
+
+	/**
 	 * Registers all hooks for the class.
 	 *
 	 * @return void
@@ -28,17 +101,26 @@ class Menu implements HookableInterface {
 	 * @return void
 	 */
 	public function register_menu(): void {
-		$icon = 'dashicons-food';
-
 		add_menu_page(
-			__( 'weMeal', 'we-meal' ),
-			__( 'weMeal', 'we-meal' ),
-			'manage_options',
-			'we-meal',
+			$this->page_title,
+			$this->menu_title,
+			$this->capability,
+			$this->menu_slug,
 			[ $this, 'render_menu_page' ],
-			$icon,
-			57
+			$this->icon,
+			$this->position,
 		);
+
+		foreach ( $this->submenus as $submenu ) {
+			add_submenu_page(
+				$submenu['parent_slug'],
+				$submenu['page_title'],
+				$submenu['menu_title'],
+				$submenu['capability'],
+				$submenu['menu_slug'],
+				$submenu['callback'],
+			);
+		}
 	}
 
 	/**
