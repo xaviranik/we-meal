@@ -82,7 +82,7 @@ class WeMeal {
 		$this->register_lifecycle();
 		$this->register_container();
 
-		add_action( 'plugins_loaded', [ Bootstrap::class, 'bootstrap_plugin' ] );
+		Bootstrap::run();
 	}
 
 	/**
