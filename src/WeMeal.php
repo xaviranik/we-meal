@@ -123,7 +123,7 @@ class WeMeal {
 	/**
 	 * Initializes the WeMeal class.
 	 *
-	 * Checks for an existing Boostimer instance
+	 * Checks for an existing WeMeal instance
 	 * and if it doesn't find one, creates it.
 	 *
 	 * @return WeMeal

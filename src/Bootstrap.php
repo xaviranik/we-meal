@@ -2,6 +2,7 @@
 
 namespace PhpKnight\WeMeal;
 
+use PhpKnight\WeMeal\Admin\CPT\Meal;
 use PhpKnight\WeMeal\Admin\AdminProvider;
 use PhpKnight\WeMeal\Core\Abstracts\Provider;
 use PhpKnight\WeMeal\Frontend\FrontendProvider;
@@ -31,7 +32,9 @@ class Bootstrap {
 	 *
 	 * @var string[]
 	 */
-	protected static $custom_post_types = [];
+	protected static $custom_post_types = [
+		Meal::class,
+	];
 
 	/**
 	 * Runs plugin bootstrap.
@@ -58,7 +61,7 @@ class Bootstrap {
 	 *
 	 * @return void
 	 */
-	protected static function install() {
+	protected static function install(): void {
 		// todo: implement installer logic
 	}
 
@@ -80,12 +83,14 @@ class Bootstrap {
 	 * Registers custom post types.
 	 *
 	 * @throws \ReflectionException
+	 *
+	 * @return void
 	 */
 	public static function register_custom_post_type(): void {
 		foreach ( self::$custom_post_types as $post_type ) {
 			if ( class_exists( $post_type ) && is_subclass_of( $post_type, CustomPostType::class ) ) {
 				$cpt = WeMeal::$container->get( $post_type );
-				$cpt->register_post_type();
+				$cpt->register_hooks();
 			}
 		}
 	}
