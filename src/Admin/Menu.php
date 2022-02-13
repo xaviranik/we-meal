@@ -81,6 +81,30 @@ class Menu implements HookableInterface {
 				'menu_slug'   => 'we-meal',
 				'callback'    => [ $this, 'render_menu_page' ],
 			],
+			[
+				'parent_slug' => 'we-meal',
+				'page_title'  => __( 'All Meals', 'we-meal' ),
+				'menu_title'  => __( 'All Meals', 'we-meal' ),
+				'capability'  => 'manage_options',
+				'menu_slug'   => 'edit.php?post_type=meal',
+				'callback'    => '',
+			],
+			[
+				'parent_slug' => 'we-meal',
+				'page_title'  => __( 'Add Meal', 'we-meal' ),
+				'menu_title'  => __( 'Add Meal', 'we-meal' ),
+				'capability'  => 'manage_options',
+				'menu_slug'   => 'post-new.php?post_type=meal',
+				'callback'    => '',
+			],
+			[
+				'parent_slug' => 'we-meal',
+				'page_title'  => __( 'Reports', 'we-meal' ),
+				'menu_title'  => __( 'Reports', 'we-meal' ),
+				'capability'  => 'manage_options',
+				'menu_slug'   => 'we-meal-reports',
+				'callback'    => [ $this, 'render_menu_page' ],
+			],
 		];
 	}
 
