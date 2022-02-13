@@ -2,8 +2,8 @@
 
 namespace PhpKnight\WeMeal;
 
-use PhpKnight\WeMeal\Admin\CPT\Meal;
 use PhpKnight\WeMeal\Admin\AdminProvider;
+use PhpKnight\WeMeal\Admin\CPT\Meal\Meal;
 use PhpKnight\WeMeal\Core\Abstracts\Provider;
 use PhpKnight\WeMeal\Frontend\FrontendProvider;
 use PhpKnight\WeMeal\Core\Abstracts\CustomPostType;
