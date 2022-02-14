@@ -1,2 +1,2 @@
-# WeMeal
-_Meal planning and ordering made easy._
+# weMeal
+Meal planning and ordering made easy._

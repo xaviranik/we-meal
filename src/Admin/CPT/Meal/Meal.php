@@ -49,6 +49,8 @@ class Meal extends CustomPostType {
 		$labels = [
 			'name'                   => __( 'Meals', 'we-meal' ),
 			'singular_name'          => __( 'Meal', 'we-meal' ),
+			'add_item'               => __( 'Add Meal', 'we-meal' ),
+			'new_item'               => __( 'New Meal', 'we-meal' ),
 			'add_new_item'           => __( 'Add Meal', 'we-meal' ),
 			'add_new'                => __( 'Add Meal', 'we-meal' ),
 			'edit_item'              => __( 'Edit Meal', 'we-meal' ),
