@@ -6,7 +6,7 @@ use PhpKnight\WeMeal\Core\Interfaces\HookableInterface;
 use PhpKnight\WeMeal\Core\Interfaces\CustomPostTypeInterface;
 
 /**
- * Class CustomPostType
+ * Class CPT
  *
  * @package PhpKnight\WeMeal\Core\Abstracts
  */

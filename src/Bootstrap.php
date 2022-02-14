@@ -31,8 +31,8 @@ class Bootstrap {
 	 * @return void
 	 */
 	public static function run(): void {
-		add_action( 'init', [ CustomPostType::class, 'register' ] );
-		add_action( 'plugins_loaded', [ self::class, 'bootstrap_plugin' ] );
+		add_action( 'init', [ CPT::class, 'register' ] );
+		add_action( 'plugins_loaded', [ self::class, 'init' ] );
 	}
 
 	/**
@@ -40,7 +40,7 @@ class Bootstrap {
 	 *
 	 * @return void
 	 */
-	public static function bootstrap_plugin(): void {
+	public static function init(): void {
 		self::install();
 		self::register_providers();
 	}

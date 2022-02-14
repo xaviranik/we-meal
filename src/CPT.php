@@ -4,7 +4,7 @@ namespace PhpKnight\WeMeal;
 
 use PhpKnight\WeMeal\Admin\CPT\Meal\Meal;
 
-class CustomPostType {
+class CPT {
 
 	/**
 	 * Holds plugin's CPT classes.
