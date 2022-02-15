@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WeMeal
+ * Plugin Name: weMeal
  * Description: Meal planning and ordering made easy.
  * URI: https://zabiranik.com
  * Author: Zabir Anik

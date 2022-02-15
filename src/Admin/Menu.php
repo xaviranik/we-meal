@@ -2,6 +2,7 @@
 
 namespace PhpKnight\WeMeal\Admin;
 
+use PhpKnight\WeMeal\WeMeal;
 use PhpKnight\WeMeal\Core\Interfaces\HookableInterface;
 
 /**
@@ -115,6 +116,7 @@ class Menu implements HookableInterface {
 	 */
 	public function register_hooks(): void {
 		add_action( 'admin_menu', [ $this, 'register_menu' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'register_scripts' ] );
 	}
 
 	/**
@@ -148,6 +150,24 @@ class Menu implements HookableInterface {
 	}
 
 	/**
+	 * Register admin scripts.
+	 *
+	 * @return void
+	 */
+	public function register_scripts(): void {
+		$asset = require_once WP_PLUGIN_STARTER_PLUGIN_DIR . '/build/main.asset.php';
+
+		wp_register_script(
+			'we-meal-main',
+			WeMeal::$build_url . '/main.js',
+			$asset['dependencies'],
+			$asset['version'],
+			false
+		);
+	}
+
+
+	/**
 	 * Renders the admin page.
 	 *
 	 * @since  1.0.0
@@ -155,7 +175,8 @@ class Menu implements HookableInterface {
 	 * @return void
 	 */
 	public function render_menu_page(): void {
-		echo '<div>Hello World</div>';
+		wp_enqueue_script( 'we-meal-main' );
+		echo '<div class="wrap"><div id="we-meal-app"></div></div>';
 	}
 }
 

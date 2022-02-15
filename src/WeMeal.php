@@ -33,6 +33,11 @@ class WeMeal {
 	public static $plugin_directory;
 
 	/**
+	 * @var string
+	 */
+	public static $build_url;
+
+	/**
 	 * Plugin base name.
 	 *
 	 * @var string
@@ -58,7 +63,7 @@ class WeMeal {
 	 *
 	 * @var string
 	 */
-	public static $assets_directory;
+	public static $assets_url;
 
 	/**
 	 * Plugin url.
@@ -98,7 +103,8 @@ class WeMeal {
 		self::$text_domain_directory = self::$plugin_directory . '/languages';
 		self::$template_directory    = self::$plugin_directory . '/templates';
 		self::$plugin_url            = plugins_url( '', self::$plugin_file );
-		self::$assets_directory      = self::$plugin_url . '/assets';
+		self::$assets_url            = self::$plugin_url . '/assets';
+		self::$build_url             = self::$plugin_url . '/build';
 	}
 
 	/**
