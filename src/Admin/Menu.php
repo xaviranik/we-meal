@@ -141,9 +141,17 @@ class Menu implements HookableInterface {
 		$asset = require_once WP_PLUGIN_STARTER_PLUGIN_DIR . '/build/main.asset.php';
 
 		wp_register_script(
-			'we-meal-main',
+			'we-meal-main-script',
 			WeMeal::$build_url . '/main.js',
 			$asset['dependencies'],
+			$asset['version'],
+			false
+		);
+
+		wp_register_style(
+			'we-meal-main-style',
+			WeMeal::$build_url . '/main.css',
+			[],
 			$asset['version'],
 			false
 		);
@@ -158,7 +166,8 @@ class Menu implements HookableInterface {
 	 * @return void
 	 */
 	public function render_menu_page(): void {
-		wp_enqueue_script( 'we-meal-main' );
+		wp_enqueue_script( 'we-meal-main-script' );
+		wp_enqueue_style( 'we-meal-main-style' );
 		echo '<div class="wrap"><div id="we-meal-app"></div></div>';
 	}
 }
