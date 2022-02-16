@@ -73,38 +73,26 @@ class Menu implements HookableInterface {
 		$this->menu_slug  = 'we-meal';
 		$this->icon       = 'dashicons-food';
 		$this->position   = 57;
-		$this->submenus   = [
+		$this->submenus = [
 			[
-				'parent_slug' => 'we-meal',
-				'page_title'  => __( 'Dashboard', 'we-meal' ),
-				'menu_title'  => __( 'Dashboard', 'we-meal' ),
-				'capability'  => 'manage_options',
-				'menu_slug'   => 'we-meal',
-				'callback'    => [ $this, 'render_menu_page' ],
+				'title'      => __( 'Dashboard', 'we-meal' ),
+				'capability' => $this->capability,
+				'url'        => 'admin.php?page=' . $this->menu_slug . '#/dashboard',
 			],
 			[
-				'parent_slug' => 'we-meal',
-				'page_title'  => __( 'All Meals', 'we-meal' ),
-				'menu_title'  => __( 'All Meals', 'we-meal' ),
-				'capability'  => 'manage_options',
-				'menu_slug'   => 'edit.php?post_type=meal',
-				'callback'    => '',
+				'title'      => __( 'Reports', 'we-meal' ),
+				'capability' => $this->capability,
+				'url'        => 'admin.php?page=' . $this->menu_slug . '#/reports',
 			],
 			[
-				'parent_slug' => 'we-meal',
-				'page_title'  => __( 'Add Meal', 'we-meal' ),
-				'menu_title'  => __( 'Add Meal', 'we-meal' ),
-				'capability'  => 'manage_options',
-				'menu_slug'   => 'post-new.php?post_type=meal',
-				'callback'    => '',
+				'title'      => __( 'All Meals', 'we-meal' ),
+				'capability' => $this->capability,
+				'url'        => 'edit.php?post_type=meal',
 			],
 			[
-				'parent_slug' => 'we-meal',
-				'page_title'  => __( 'Reports', 'we-meal' ),
-				'menu_title'  => __( 'Reports', 'we-meal' ),
-				'capability'  => 'manage_options',
-				'menu_slug'   => 'we-meal-reports',
-				'callback'    => [ $this, 'render_menu_page' ],
+				'title'      => __( 'Add Meal', 'we-meal' ),
+				'capability' => $this->capability,
+				'url'        => 'post-new.php?post_type=meal',
 			],
 		];
 	}
@@ -127,6 +115,8 @@ class Menu implements HookableInterface {
 	 * @return void
 	 */
 	public function register_menu(): void {
+		global $submenu;
+
 		add_menu_page(
 			$this->page_title,
 			$this->menu_title,
@@ -137,15 +127,8 @@ class Menu implements HookableInterface {
 			$this->position,
 		);
 
-		foreach ( $this->submenus as $submenu ) {
-			add_submenu_page(
-				$submenu['parent_slug'],
-				$submenu['page_title'],
-				$submenu['menu_title'],
-				$submenu['capability'],
-				$submenu['menu_slug'],
-				$submenu['callback'],
-			);
+		foreach ( $this->submenus as $item ) {
+			$submenu[ $this->menu_slug ][] = [ $item['title'], $item['capability'], $item['url'] ]; // phpcs:ignore
 		}
 	}
 
