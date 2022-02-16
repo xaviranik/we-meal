@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#wpcontent {
+	padding-left: 0;
+
+	@media screen and (max-width: 782px) {
+		padding-left: 0 !important;
+	}
+}

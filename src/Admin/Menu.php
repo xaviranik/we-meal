@@ -168,7 +168,7 @@ class Menu implements HookableInterface {
 	public function render_menu_page(): void {
 		wp_enqueue_script( 'we-meal-main-script' );
 		wp_enqueue_style( 'we-meal-main-style' );
-		echo '<div class="wrap"><div id="we-meal-app"></div></div>';
+		echo '<div id="we-meal-app"></div>';
 	}
 }
 
