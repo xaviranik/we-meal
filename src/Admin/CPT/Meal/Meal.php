@@ -14,11 +14,13 @@ class Meal extends CustomPostType {
 	/**
 	 * Meal CPT constructor.
 	 *
-	 * @var string
+	 * @param PriceMetaBox $price_meta_box
+	 * @param Customizer $customizer
 	 */
-	public function __construct( PriceMetaBox $price_meta_box ) {
+	public function __construct( PriceMetaBox $price_meta_box, Customizer $customizer ) {
 		parent::__construct();
 		$price_meta_box->register_hooks();
+		$customizer->register_hooks();
 	}
 
 	/**
@@ -27,7 +29,6 @@ class Meal extends CustomPostType {
 	 * @return void
 	 */
 	public function register_hooks(): void {
-		add_filter( 'enter_title_here', [ $this, 'custom_enter_title' ] );
 	}
 
 	/**
@@ -95,20 +96,6 @@ class Meal extends CustomPostType {
 			'publicly_queryable'  => false,
 			'capability_type'     => 'post',
 		];
-	}
-
-	/**
-	 * Custom enter title text for custom post type.
-	 *
-	 * @param $title
-	 *
-	 * @return string
-	 */
-	public function custom_enter_title( $title ): string {
-		if ( 'meal' === get_post_type() ) {
-			$title = __( 'Enter the name of the meal', 'we-meal' );
-		}
-		return $title;
 	}
 }
 

@@ -7,6 +7,8 @@ use PhpKnight\WeMeal\Core\Abstracts\MetaBox;
 
 class PriceMetaBox extends MetaBox {
 
+	public static $price_meta_key = '_we_meal_price';
+
 	/**
 	 * Registers all hooks for the class.
 	 *
@@ -50,7 +52,7 @@ class PriceMetaBox extends MetaBox {
 	public function render_meta_box_content( WP_Post $post ): void {
 		wp_nonce_field( 'we_meal_price_meta_box', 'we_meal_price_meta_box_nonce' );
 
-		$price = get_post_meta( $post->ID, '_we_meal_price', true );
+		$price = get_post_meta( $post->ID, self::$price_meta_key, true );
 
 		?>
 		<label for="we_meal_price_field">
@@ -92,9 +94,9 @@ class PriceMetaBox extends MetaBox {
 		$price = sanitize_text_field( wp_unslash( $_POST['we_meal_price'] ) );
 
 		if ( ! empty( $price ) ) {
-			update_post_meta( $post_id, '_we_meal_price', $price );
+			update_post_meta( $post_id, self::$price_meta_key, $price );
 		} else {
-			delete_post_meta( $post_id, '_we_meal_price' );
+			delete_post_meta( $post_id, self::$price_meta_key );
 		}
 	}
 }
