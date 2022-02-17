@@ -41,17 +41,7 @@ class Bootstrap {
 	 * @return void
 	 */
 	public static function init(): void {
-		self::install();
 		self::register_providers();
-	}
-
-	/**
-	 * Installs the plugin.
-	 *
-	 * @return void
-	 */
-	protected static function install(): void {
-		// todo: implement installer logic
 	}
 
 	/**

@@ -19,6 +19,7 @@ class Meal extends CustomPostType {
 	 */
 	public function __construct( PriceMetaBox $price_meta_box, Customizer $customizer ) {
 		parent::__construct();
+
 		$price_meta_box->register_hooks();
 		$customizer->register_hooks();
 	}
