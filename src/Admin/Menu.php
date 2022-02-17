@@ -110,6 +110,7 @@ class Menu implements HookableInterface {
 	public function register_hooks(): void {
 		add_action( 'admin_menu', [ $this, 'register_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'register_scripts' ] );
+		add_action( 'admin_head', [ $this, 'cleanup_admin_notices' ], 1 );
 	}
 
 	/**
@@ -174,6 +175,22 @@ class Menu implements HookableInterface {
 		wp_enqueue_script( 'we-meal-main-script' );
 		wp_enqueue_style( 'we-meal-main-style' );
 		echo '<div id="we-meal-app"></div>';
+	}
+
+	/**
+	 * Cleans admin notice for we-meal page.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	public function cleanup_admin_notices() {
+		global $pagenow;
+
+		// @codingStandardsIgnoreLine
+		if ( 'admin.php' === $pagenow && 'we-meal#/dashboard' === $_GET['page'] ) {
+			remove_all_actions( 'admin_notices' );
+		}
 	}
 }
 
