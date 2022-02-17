@@ -434,9 +434,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-top-0 {
   top: 0px;
 }
-.wm-ml-6 {
-  margin-left: 1.5rem;
-}
 .wm-ml-8 {
   margin-left: 2rem;
 }
@@ -453,15 +450,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-.wm-p-2 {
-  padding: 0.5rem;
-}
-.wm-p-4 {
-  padding: 1rem;
-}
-.wm-p-8 {
-  padding: 2rem;
-}
 .wm-px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -473,10 +461,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-.wm-text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 .wm-font-medium {
   font-weight: 500;

@@ -80,6 +80,11 @@ class Menu implements HookableInterface {
 				'url'        => 'admin.php?page=' . $this->menu_slug . '#/dashboard',
 			],
 			[
+				'title'      => __( 'Orders', 'we-meal' ),
+				'capability' => $this->capability,
+				'url'        => 'admin.php?page=' . $this->menu_slug . '#/orders',
+			],
+			[
 				'title'      => __( 'Reports', 'we-meal' ),
 				'capability' => $this->capability,
 				'url'        => 'admin.php?page=' . $this->menu_slug . '#/reports',
