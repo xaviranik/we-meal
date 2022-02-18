@@ -3,6 +3,7 @@
 namespace PhpKnight\WeMeal\Admin;
 
 use PhpKnight\WeMeal\WeMeal;
+use PhpKnight\WeMeal\Admin\CPT\Meal\Capability;
 use PhpKnight\WeMeal\Core\Interfaces\HookableInterface;
 
 /**
@@ -66,7 +67,7 @@ class Menu implements HookableInterface {
 	 *
 	 * @since 1.0.0
 	 */
-	public function __construct( MealCapability $capability ) {
+	public function __construct( Capability $capability ) {
 		$capability->register_hooks();
 
 		$this->page_title = __( 'weMeal', 'we-meal' );

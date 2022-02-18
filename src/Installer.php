@@ -45,6 +45,11 @@ class Installer {
 		dbDelta( $table );
 	}
 
+	/**
+	 * Adds the roles.
+	 *
+	 * @return void
+	 */
 	private static function add_roles(): void {
 		add_role(
 			'meal_manager',

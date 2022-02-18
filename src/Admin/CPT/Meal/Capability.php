@@ -1,10 +1,10 @@
 <?php
 
-namespace PhpKnight\WeMeal\Admin;
+namespace PhpKnight\WeMeal\Admin\CPT\Meal;
 
 use PhpKnight\WeMeal\Core\Interfaces\HookableInterface;
 
-class MealCapability implements HookableInterface {
+class Capability implements HookableInterface {
 
 	/**
 	 * Registers all hooks for the class.
