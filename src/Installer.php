@@ -16,6 +16,7 @@ class Installer {
 	 */
 	public static function run(): void {
 		self::create_tables();
+		self::add_roles();
 	}
 
 	/**
@@ -28,7 +29,7 @@ class Installer {
 
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
-		$collate = $wpdb->get_charset_collate();
+		$charset_collate = $wpdb->get_charset_collate();
 
 		$table = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}we_meal_order` (
 		  `id` int NOT NULL AUTO_INCREMENT,
@@ -39,8 +40,25 @@ class Installer {
 		  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 		  `updated_at` timestamp NULL DEFAULT NULL,
 		  PRIMARY KEY (`id`)
-		) ENGINE=InnoDB {$collate};";
+		) {$charset_collate};";
 
 		dbDelta( $table );
+	}
+
+	private static function add_roles(): void {
+		add_role(
+			'meal_manager',
+			'Meal Manager',
+			[
+				'read'                   => true,
+				'manage_meal'            => true,
+				'edit_meals'             => true,
+				'edit_others_meals'      => true,
+				'delete_meals'           => true,
+				'publish_meals'          => true,
+				'edit_published_meals'   => true,
+				'delete_published_meals' => true,
+			],
+		);
 	}
 }

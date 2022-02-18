@@ -73,7 +73,7 @@ class PriceMetaBox extends MetaBox {
 			return;
 		}
 
-		if ( ! current_user_can( 'manage_options', $post_id ) ) {
+		if ( ! current_user_can( 'manage_meal', $post_id ) ) {
 			return;
 		}
 

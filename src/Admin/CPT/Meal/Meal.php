@@ -95,7 +95,8 @@ class Meal extends CustomPostType {
 			'has_archive'         => false,
 			'exclude_from_search' => false,
 			'publicly_queryable'  => false,
-			'capability_type'     => 'post',
+			'capability_type' => 'meal', //custom capability type
+			'map_meta_cap'    => true, //map_meta_cap must be true
 		];
 	}
 }

@@ -66,10 +66,12 @@ class Menu implements HookableInterface {
 	 *
 	 * @since 1.0.0
 	 */
-	public function __construct() {
+	public function __construct( MealCapability $capability ) {
+		$capability->register_hooks();
+
 		$this->page_title = __( 'weMeal', 'we-meal' );
 		$this->menu_title = __( 'weMeal', 'we-meal' );
-		$this->capability = 'manage_options';
+		$this->capability = 'read';
 		$this->menu_slug  = 'we-meal';
 		$this->icon       = 'dashicons-food';
 		$this->position   = 57;
@@ -81,7 +83,7 @@ class Menu implements HookableInterface {
 			],
 			[
 				'title'      => __( 'Orders', 'we-meal' ),
-				'capability' => $this->capability,
+				'capability' => 'manage_meal',
 				'url'        => 'admin.php?page=' . $this->menu_slug . '#/orders',
 			],
 			[
@@ -91,12 +93,12 @@ class Menu implements HookableInterface {
 			],
 			[
 				'title'      => __( 'All Meals', 'we-meal' ),
-				'capability' => $this->capability,
+				'capability' => 'manage_meal',
 				'url'        => 'edit.php?post_type=meal',
 			],
 			[
 				'title'      => __( 'Add Meal', 'we-meal' ),
-				'capability' => $this->capability,
+				'capability' => 'manage_meal',
 				'url'        => 'post-new.php?post_type=meal',
 			],
 		];
@@ -184,7 +186,7 @@ class Menu implements HookableInterface {
 	 *
 	 * @return void
 	 */
-	public function cleanup_admin_notices() {
+	public function cleanup_admin_notices(): void {
 		global $pagenow;
 
 		// @codingStandardsIgnoreLine
