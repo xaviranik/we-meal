@@ -8,6 +8,13 @@ use PhpKnight\WeMeal\Api\Controllers\MealCapabilityController;
 class Api {
 
 	/**
+	 * Namespace for the REST API.
+	 *
+	 * @var string
+	 */
+	public static $namespace = 'wemeal/v1';
+
+	/**
 	 * Register all the necessary controllers for APIs.
 	 *
 	 * @var array
