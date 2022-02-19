@@ -3,6 +3,7 @@
 namespace PhpKnight\WeMeal\Core\Abstracts;
 
 use PhpKnight\WeMeal\WeMeal;
+use PhpKnight\WeMeal\Core\Interfaces\ProviderInterface;
 use PhpKnight\WeMeal\Core\Interfaces\HookableInterface;
 
 /**
@@ -10,7 +11,7 @@ use PhpKnight\WeMeal\Core\Interfaces\HookableInterface;
  *
  * @package PhpKnight\WeMeal
  */
-abstract class Provider {
+abstract class Provider implements ProviderInterface {
 
 	/**
 	 * Holds classes that should be instantiated.
