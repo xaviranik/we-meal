@@ -8,14 +8,14 @@ use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
 use PhpKnight\WeMeal\Api\Api;
-use PhpKnight\WeMeal\Models\DailyMenuModel;
+use PhpKnight\WeMeal\Models\DailyMealMenuModel;
 
 class DailyMenuController extends WP_REST_Controller {
 
 	/**
-	 * DailyMenuModel instance.
+	 * DailyMealMenuModel instance.
 	 *
-	 * @var DailyMenuModel
+	 * @var DailyMealMenuModel
 	 */
 	protected $daily_menu_model;
 
@@ -24,7 +24,7 @@ class DailyMenuController extends WP_REST_Controller {
 	 *
 	 * @return void
 	 */
-	public function __construct( DailyMenuModel $daily_menu_model ) {
+	public function __construct( DailyMealMenuModel $daily_menu_model ) {
 		$this->namespace = Api::$namespace;
 		$this->rest_base = 'menu';
 

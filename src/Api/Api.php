@@ -4,6 +4,7 @@ namespace PhpKnight\WeMeal\Api;
 
 use WP_REST_Controller;
 use PhpKnight\WeMeal\WeMeal;
+use PhpKnight\WeMeal\Api\Controllers\MealController;
 use PhpKnight\WeMeal\Api\Controllers\DailyMenuController;
 use PhpKnight\WeMeal\Api\Controllers\MealCapabilityController;
 
@@ -24,6 +25,7 @@ class Api {
 	protected static $controllers = [
 		MealCapabilityController::class,
 		DailyMenuController::class,
+		MealController::class,
 	];
 
 	/**
