@@ -3,6 +3,8 @@
 namespace PhpKnight\WeMeal\Api;
 
 use WP_REST_Controller;
+use PhpKnight\WeMeal\WeMeal;
+use PhpKnight\WeMeal\Api\Controllers\DailyMenuController;
 use PhpKnight\WeMeal\Api\Controllers\MealCapabilityController;
 
 class Api {
@@ -21,12 +23,14 @@ class Api {
 	 */
 	protected static $controllers = [
 		MealCapabilityController::class,
+		DailyMenuController::class,
 	];
 
 	/**
 	 * Registers services with the container.
 	 *
 	 * @return void
+	 * @throws \ReflectionException
 	 */
 	public static function register(): void {
 		foreach ( self::$controllers as $controller ) {
@@ -35,7 +39,7 @@ class Api {
 			}
 
 			if ( is_subclass_of( $controller, WP_REST_Controller::class ) ) {
-				$api_controller = new $controller();
+				$api_controller = WeMeal::$container->get( $controller );
 				$api_controller->register_routes();
 			}
 		}

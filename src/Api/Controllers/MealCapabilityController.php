@@ -26,7 +26,7 @@ class MealCapabilityController extends WP_REST_Controller {
 	 *
 	 * @return void
 	 */
-	public function register_routes() {
+	public function register_routes(): void {
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base,
