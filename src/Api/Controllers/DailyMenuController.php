@@ -126,7 +126,7 @@ class DailyMenuController extends WP_REST_Controller {
 		return rest_ensure_response(
 			[
 				'status'  => 'success',
-				'meal_id' => $request->get_param( 'meal_id' ),
+				'message' => __( 'Daily menu created successfully.', 'we-meal' ),
 			]
 		);
 	}

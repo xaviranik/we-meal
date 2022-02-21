@@ -68,23 +68,9 @@ class OrderController extends WP_REST_Controller {
 					'callback'            => [ $this, 'create_item' ],
 					'permission_callback' => [ $this, 'create_item_permissions_check' ],
 					'args'                => [
-						'user_id' => [
-							'description'       => __( 'Unique identifier for the user.', 'we-meal' ),
-							'type'              => 'integer',
-							'required'          => true,
-							'sanitize_callback' => 'sanitize_text_field',
-							'validate_callback' => 'rest_validate_request_arg',
-						],
 						'meal_id' => [
 							'description'       => __( 'Unique identifier for the meal.', 'we-meal' ),
 							'type'              => 'integer',
-							'required'          => true,
-							'sanitize_callback' => 'sanitize_text_field',
-							'validate_callback' => 'rest_validate_request_arg',
-						],
-						'price' => [
-							'description'       => __( 'Meal price.', 'we-meal' ),
-							'type'              => 'number',
 							'required'          => true,
 							'sanitize_callback' => 'sanitize_text_field',
 							'validate_callback' => 'rest_validate_request_arg',
@@ -115,7 +101,7 @@ class OrderController extends WP_REST_Controller {
 	 * @return bool|true True if the request has access to create items, WP_Error object otherwise.
 	 */
 	public function create_item_permissions_check( $request ): bool {
-		return is_user_logged_in() && current_user_can( 'manage_meal' );
+		return is_user_logged_in() && current_user_can( 'read' );
 	}
 
 	/**
@@ -127,8 +113,7 @@ class OrderController extends WP_REST_Controller {
 	public function create_item( $request ) {
 		$this->order_model
 			->set_user_id( get_current_user_id() )
-			->set_meal_id( $request->get_param( 'meal_id' ) )
-			->set_price( floatval( $request->get_param( 'price' ) ) );
+			->set_meal_id( $request->get_param( 'meal_id' ) );
 
 		$response = $this->order_model->save();
 
@@ -150,19 +135,9 @@ class OrderController extends WP_REST_Controller {
 			'title'      => 'capability',
 			'type'       => 'object',
 			'properties' => [
-				'user_id' => [
-					'description' => __( 'Unique identifier for the user.', 'we-meal' ),
-					'type'        => 'integer',
-					'required'    => true,
-				],
 				'meal_id' => [
 					'description' => __( 'Unique identifier for the meal.', 'we-meal' ),
 					'type'        => 'integer',
-					'required'    => true,
-				],
-				'price' => [
-					'description' => __( 'Meal price.', 'we-meal' ),
-					'type'        => 'float',
 					'required'    => true,
 				],
 			],

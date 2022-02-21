@@ -19,8 +19,18 @@ const DailyMenu = () => {
 	};
 
 	const handlePlaceOrderClick = () => {
+		const orderData = {
+			meal_id: selectedMealMenu,
+		};
 		if (selectedMealMenu) {
-			console.log('Place order clicked');
+			apiFetch( { path: '/wemeal/v1/order', method: 'POST', data: orderData } )
+				.then((response) => {
+					if (response.success) {
+						setSelectedMealMenu(null);
+					} else {
+						console.log(response.message);
+					}
+				} );
 		}
 	};
 

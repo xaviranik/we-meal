@@ -2,6 +2,7 @@
 
 namespace PhpKnight\WeMeal\Models;
 
+use PhpKnight\WeMeal\Admin\CPT\Meal\PriceMetaBox;
 use WP_Error;
 
 class OrderModel {
@@ -99,6 +100,7 @@ class OrderModel {
 	 * @return float
 	 */
 	public function get_price(): float {
+		$this->price = floatval( get_post_meta( $this->get_meal_id(), PriceMetaBox::$price_meta_key, true ) );
 		return $this->price;
 	}
 
@@ -178,9 +180,9 @@ class OrderModel {
 		$created = $wpdb->insert(
 			$wpdb->prefix . 'we_meal_orders',
 			[
-				'user_id'    => $this->user_id,
-				'meal_id'    => $this->meal_id,
-				'price'      => $this->price,
+				'user_id'    => $this->get_user_id(),
+				'meal_id'    => $this->get_meal_id(),
+				'price'      => $this->get_price(),
 			]
 		);
 
@@ -193,7 +195,7 @@ class OrderModel {
 		}
 
 		return [
-			'status' => 'success',
+			'success' => true,
 			'message' => __( 'Order created successfully', 'we-meal' ),
 		];
 	}

@@ -79,8 +79,22 @@ const DailyMenu = () => {
   };
 
   const handlePlaceOrderClick = () => {
+    const orderData = {
+      meal_id: selectedMealMenu
+    };
+
     if (selectedMealMenu) {
-      console.log('Place order clicked');
+      _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
+        path: '/wemeal/v1/order',
+        method: 'POST',
+        data: orderData
+      }).then(response => {
+        if (response.success) {
+          setSelectedMealMenu(null);
+        } else {
+          console.log(response.message);
+        }
+      });
     }
   };
 
