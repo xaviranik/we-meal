@@ -85,6 +85,7 @@ class DailyMenuController extends WP_REST_Controller {
 	 * Checks if a given request has access to create items.
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
+	 *
 	 * @return bool|true True if the request has access to create items, WP_Error object otherwise.
 	 */
 	public function create_item_permissions_check( $request ): bool {
@@ -124,7 +125,7 @@ class DailyMenuController extends WP_REST_Controller {
 
 		return rest_ensure_response(
 			[
-				'status' => 'success',
+				'status'  => 'success',
 				'meal_id' => $request->get_param( 'meal_id' ),
 			]
 		);

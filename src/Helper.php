@@ -16,7 +16,7 @@ class Helper {
 	 */
 	public static function format_price( $price, int $decimal = 2, string $decimal_separator = '.', string $thousand_separator = ',' ): string {
 		$price = floatval( $price );
-		return '&#2547;' . number_format( $price, $decimal, $decimal_separator, $thousand_separator );
+		return '৳' . number_format( $price, $decimal, $decimal_separator, $thousand_separator );
 	}
 
 }

@@ -74,7 +74,7 @@ class MealModel {
 	 * @return string
 	 */
 	public function get_name(): string {
-		$this->name = $this->meal->post_name;
+		$this->name = $this->meal->post_title;
 
 		return $this->name;
 	}
@@ -94,7 +94,7 @@ class MealModel {
 	 * @return string
 	 */
 	public function get_description(): string {
-		$this->description = $this->meal->post_content;
+		$this->description = wp_strip_all_tags( $this->meal->post_content, true );
 
 		return $this->description;
 	}

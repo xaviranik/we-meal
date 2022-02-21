@@ -23,7 +23,7 @@ class DailyMealMenuModel {
 	 *
 	 * @var array
 	 */
-	protected $menus;
+	protected $menus = [];
 
 	/**
 	 * @return array
@@ -76,7 +76,7 @@ class DailyMealMenuModel {
 		foreach ( $posts as $post ) {
 			$meal = new MealModel( $post );
 
-			$this->menus[ $meal->get_id() ] = [
+			$this->menus[] = [
 				'id'              => $meal->get_id(),
 				'name'            => $meal->get_name(),
 				'description'     => $meal->get_description(),

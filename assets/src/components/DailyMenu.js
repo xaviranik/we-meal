@@ -1,12 +1,16 @@
 import {__} from "@wordpress/i18n";
-import MealMenuCard from "./MealMenuCard";
+import apiFetch from "@wordpress/api-fetch";
 import {useState, useEffect} from "@wordpress/element";
+import MealMenuCard from "./MealMenuCard";
 
 const DailyMenu = () => {
 	const [mealMenus, setMealMenus] = useState([]);
 
 	useEffect(() => {
-
+		apiFetch( { path: '/wemeal/v1/menu' } )
+			.then( ( response ) => {
+				setMealMenus( response );
+			} );
 	}, []);
 
 	return (
@@ -17,7 +21,16 @@ const DailyMenu = () => {
 					<button className={'wm-button-primary'}>{__( 'Place Order', 'we-meal' )}</button>
 				</div>
 
-				<MealMenuCard />
+				{
+					mealMenus && mealMenus.map( ( mealMenu ) => {
+						return (
+							<MealMenuCard
+								key={mealMenu.id}
+								mealMenu={mealMenu}
+							/>
+						);
+					} )
+				}
 			</div>
 		</>
 	);
