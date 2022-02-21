@@ -2,9 +2,6 @@
 
 namespace PhpKnight\WeMeal\Models;
 
-use PhpKnight\WeMeal\Helper;
-use PhpKnight\WeMeal\Admin\CPT\Meal\PriceMetaBox;
-
 class DailyMealMenuModel {
 
 	/**

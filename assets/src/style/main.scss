@@ -1,6 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.wm-card {
+		@apply wm-bg-white wm-p-4 wm-rounded-md wm-drop-shadow-sm;
+	}
+
+	.wm-button-primary {
+		@apply wm-bg-indigo-600 wm-px-4 wm-py-2 wm-text-white wm-rounded-md wm-shadow-md wm-transition wm-duration-100 wm-ease-in-out hover:wm-bg-indigo-700 focus:wm-bg-indigo-700;
+	}
+
+	.wm-transition-eo {
+		@apply wm-transition-all wm-duration-100 wm-ease-in-out;
+	}
+}
+
+#we-meal-app {
+	@apply wm-font-sans;
+	@apply wm-text-gray-900;
+
+	font-family: 'Poppins', sans-serif;
+}
 
 #wpcontent {
 	padding-left: 0;
