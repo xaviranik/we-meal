@@ -31,12 +31,12 @@ class Installer {
 
 		$charset_collate = $wpdb->get_charset_collate();
 
-		$table = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}we_meal_order` (
+		$table = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}we_meal_orders` (
 		  `id` int NOT NULL AUTO_INCREMENT,
 		  `user_id` int NOT NULL,
 		  `meal_id` int NOT NULL,
 		  `price` decimal(10,4) DEFAULT NULL,
-		  `status` tinyint(1) DEFAULT '1',
+		  `status` varchar(25) DEFAULT 'unpaid',
 		  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 		  `updated_at` timestamp NULL DEFAULT NULL,
 		  PRIMARY KEY (`id`)
