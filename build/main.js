@@ -120,6 +120,9 @@ const DailyMenu = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 const Header = () => {
@@ -127,9 +130,14 @@ const Header = () => {
     className: 'wm-bg-white wm-flex wm-items-center wm-h-16 wm-drop-shadow-sm wm-w-full'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-container wm-mx-auto'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'wm-flex wm-items-center wm-justify-between md:wm-mx-8 wm-mx-6'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
-    className: 'wm-text-xl md:wm-ml-8 wm-ml-6 wm-font-medium'
-  }, "weMeal")));
+    className: 'wm-text-xl wm-font-medium'
+  }, "weMeal"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => {},
+    className: `wm-button-outline`
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Set Daily Menu', 'we-meal')))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);

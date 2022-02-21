@@ -10,7 +10,11 @@
 	}
 
 	.wm-button-primary {
-		@apply wm-bg-indigo-600 wm-px-4 wm-py-2 wm-text-white wm-rounded-md wm-shadow-md wm-transition wm-duration-100 wm-ease-in-out hover:wm-bg-indigo-700 focus:wm-bg-indigo-700;
+		@apply wm-bg-indigo-600 wm-px-4 wm-py-2 wm-text-white wm-rounded-md wm-shadow-md wm-transition wm-font-semibold wm-duration-100 wm-ease-in-out hover:wm-bg-indigo-700 focus:wm-bg-indigo-700;
+	}
+
+	.wm-button-outline {
+		@apply wm-bg-white wm-px-4 wm-py-2 wm-text-indigo-600 wm-rounded-md wm-border-2 wm-border-indigo-600 wm-font-semibold wm-transition wm-duration-100 wm-ease-in-out hover:wm-text-white hover:wm-bg-indigo-700 focus:wm-bg-indigo-700;
 	}
 
 	.wm-transition-eo {
