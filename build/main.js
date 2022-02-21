@@ -65,6 +65,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const DailyMenu = () => {
   const [mealMenus, setMealMenus] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [selectedMealMenu, setSelectedMealMenu] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
       path: '/wemeal/v1/menu'
@@ -72,6 +73,28 @@ const DailyMenu = () => {
       setMealMenus(response);
     });
   }, []);
+
+  const handleMealMenuClick = mealId => {
+    setSelectedMealMenu(mealId);
+  };
+
+  const handlePlaceOrderClick = () => {
+    if (selectedMealMenu) {
+      console.log('Place order clicked');
+    }
+  };
+
+  const renderMealMenus = () => {
+    return mealMenus.map(mealMenu => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MealMenuCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        key: mealMenu.id,
+        mealMenu: mealMenu,
+        selected: selectedMealMenu === mealMenu.id,
+        onClick: () => handleMealMenuClick(mealMenu.id)
+      });
+    });
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-card'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -79,13 +102,9 @@ const DailyMenu = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     className: 'wm-text-base wm-font-semibold'
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Today's Menu", 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: 'wm-button-primary'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Place Order', 'we-meal'))), mealMenus && mealMenus.map(mealMenu => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MealMenuCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      key: mealMenu.id,
-      mealMenu: mealMenu
-    });
-  })));
+    onClick: handlePlaceOrderClick,
+    className: `wm-button-primary ${selectedMealMenu ? '' : 'wm-disabled'}`
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Place Order', 'we-meal'))), mealMenus && renderMealMenus()));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DailyMenu);
@@ -156,10 +175,13 @@ __webpack_require__.r(__webpack_exports__);
 
 const MealMenuCard = _ref => {
   let {
-    mealMenu
+    mealMenu,
+    onClick,
+    selected
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-rounded-md wm-border-2 wm-border-slate-100 wm-shadow-sm wm-p-3 wm-mt-4 wm-cursor-pointer wm-transition-eo hover:wm-border-2 hover:wm-border-slate-600'
+    onClick: onClick,
+    className: `wm-rounded-md wm-border-2 wm-border-slate-100 wm-shadow-sm wm-p-3 wm-mt-4 wm-cursor-pointer wm-transition-eo hover:wm-border-slate-600 ${selected ? 'wm-border-slate-600' : ''}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: 'wm-font-semibold'
   }, mealMenu.name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

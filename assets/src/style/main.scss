@@ -16,10 +16,13 @@
 	.wm-transition-eo {
 		@apply wm-transition-all wm-duration-100 wm-ease-in-out;
 	}
+
+	.wm-disabled {
+		@apply wm-opacity-50 wm-cursor-not-allowed;
+	}
 }
 
 #we-meal-app {
-	@apply wm-font-sans;
 	@apply wm-text-gray-900;
 
 	font-family: 'Poppins', sans-serif;

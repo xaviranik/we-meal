@@ -1,8 +1,8 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Reports from "./pages/Reports";
-import Orders from "./pages/Orders";
-import Header from "./components/Header";
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import Reports from './pages/Reports';
+import Orders from './pages/Orders';
+import Header from './components/Header';
 import './style/main.scss';
 
 const WeMeal = () => {
@@ -11,9 +11,9 @@ const WeMeal = () => {
 			<Header />
 			<Router>
 				<Routes>
-					<Route path="/dashboard" element={<Dashboard/>} />
-					<Route path="/reports" element={<Reports/>} />
-					<Route path="/orders" element={<Orders/>} />
+					<Route path="/dashboard" element={<Dashboard />} />
+					<Route path="/reports" element={<Reports />} />
+					<Route path="/orders" element={<Orders />} />
 				</Routes>
 			</Router>
 		</>

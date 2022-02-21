@@ -1,10 +1,10 @@
-import {__} from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 const Reports = () => {
 	return (
 		<>
 			<div className={'wm-px-8 wm-py-4'}>
-				<h1 className={'wm-text-xl'}>{__( 'Reports', 'we-meal' )}</h1>
+				<h1 className={'wm-text-xl'}>{__('Reports', 'we-meal')}</h1>
 			</div>
 		</>
 	);

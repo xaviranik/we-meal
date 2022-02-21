@@ -1,5 +1,5 @@
-import DailyMenu from "../components/DailyMenu";
-import MealCalendar from "../components/MealCalendar";
+import DailyMenu from '../components/DailyMenu';
+import MealCalendar from '../components/MealCalendar';
 
 const Dashboard = () => {
 	return (
