@@ -46,7 +46,7 @@ class MealModel {
 	/**
 	 * MealModel constructor.
 	 */
-	public function __construct( WP_Post $meal ) {
+	public function __construct( $meal = null ) {
 		$this->meal = $meal;
 	}
 
@@ -170,6 +170,48 @@ class MealModel {
 		$this->image = $image;
 
 		return $this;
+	}
+
+	/**
+	 * Gets the meal object based on the arguments.
+	 *
+	 * @param array $ids
+	 * @param string $search
+	 *
+	 * @return array
+	 */
+	public function get( array $ids = [], string $search = '' ): array {
+		$result = [];
+
+		$defaults = [
+			'post_type'   => 'meal',
+			'post_status' => 'publish',
+			'orderby'     => 'title',
+			'order'       => 'ASC',
+			's'           => '',
+		];
+
+		$args = [
+			'post__in' => array_map( 'intval', $ids ),
+			's'        => sanitize_text_field( $search ),
+		];
+
+		$posts = get_posts( wp_parse_args( $args, $defaults ) );
+
+		foreach ( $posts as $post ) {
+			$meal = new MealModel( $post );
+
+			$result[] = [
+				'id'              => $meal->get_id(),
+				'name'            => $meal->get_name(),
+				'description'     => $meal->get_description(),
+				'price'           => $meal->get_price(),
+				'formatted_price' => $meal->get_formatted_price(),
+				'image'           => $meal->get_image(),
+			];
+		}
+
+		return $result;
 	}
 
 }
