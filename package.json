@@ -22,6 +22,7 @@
     "@wordpress/api-fetch": "^6.0.1",
     "@wordpress/element": "^4.1.1",
     "@wordpress/i18n": "^4.3.1",
+    "react-responsive-modal": "^6.2.0",
     "react-router-dom": "^6.2.1"
   },
   "scripts": {
