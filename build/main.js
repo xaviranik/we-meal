@@ -68,7 +68,7 @@ const DailyMenu = () => {
   const [selectedMealMenu, setSelectedMealMenu] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
-      path: '/wemeal/v1/menu'
+      path: '/wemeal/v1/menus'
     }).then(response => {
       setMealMenus(response);
     });
@@ -85,7 +85,7 @@ const DailyMenu = () => {
 
     if (selectedMealMenu) {
       _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
-        path: '/wemeal/v1/order',
+        path: '/wemeal/v1/orders',
         method: 'POST',
         data: orderData
       }).then(response => {

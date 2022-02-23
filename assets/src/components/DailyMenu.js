@@ -8,7 +8,7 @@ const DailyMenu = () => {
 	const [selectedMealMenu, setSelectedMealMenu] = useState(null);
 
 	useEffect(() => {
-		apiFetch( { path: '/wemeal/v1/menu' } )
+		apiFetch( { path: '/wemeal/v1/menus' } )
 			.then((response) => {
 				setMealMenus(response);
 			} );
@@ -23,7 +23,7 @@ const DailyMenu = () => {
 			meal_id: selectedMealMenu,
 		};
 		if (selectedMealMenu) {
-			apiFetch( { path: '/wemeal/v1/order', method: 'POST', data: orderData } )
+			apiFetch( { path: '/wemeal/v1/orders', method: 'POST', data: orderData } )
 				.then((response) => {
 					if (response.success) {
 						setSelectedMealMenu(null);
