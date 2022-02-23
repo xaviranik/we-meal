@@ -26,7 +26,7 @@ class OrderController extends WP_REST_Controller {
 	 */
 	public function __construct( OrderModel $order_model ) {
 		$this->namespace = Api::$namespace;
-		$this->rest_base = 'order';
+		$this->rest_base = 'orders';
 
 		$this->order_model = $order_model;
 	}

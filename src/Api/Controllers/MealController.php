@@ -26,7 +26,7 @@ class MealController extends WP_REST_Controller {
 	 */
 	public function __construct( MealModel $meal_model ) {
 		$this->namespace = Api::$namespace;
-		$this->rest_base = 'meal';
+		$this->rest_base = 'meals';
 
 		$this->meal_model = $meal_model;
 	}

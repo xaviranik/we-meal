@@ -3,6 +3,7 @@
 namespace PhpKnight\WeMeal\Api;
 
 use PhpKnight\WeMeal\Api\Controllers\MealController;
+use PhpKnight\WeMeal\Api\Controllers\Reports\OrderReportController;
 use WP_REST_Controller;
 use PhpKnight\WeMeal\WeMeal;
 use PhpKnight\WeMeal\Api\Controllers\OrderController;
@@ -28,6 +29,7 @@ class Api {
 		MealCapabilityController::class,
 		DailyMenuController::class,
 		OrderController::class,
+		OrderReportController::class,
 	];
 
 	/**

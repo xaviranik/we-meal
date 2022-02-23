@@ -26,7 +26,7 @@ class DailyMenuController extends WP_REST_Controller {
 	 */
 	public function __construct( DailyMealMenuModel $daily_menu_model ) {
 		$this->namespace = Api::$namespace;
-		$this->rest_base = 'menu';
+		$this->rest_base = 'menus';
 
 		$this->daily_menu_model = $daily_menu_model;
 	}
