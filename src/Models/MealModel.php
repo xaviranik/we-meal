@@ -189,6 +189,7 @@ class MealModel {
 			'orderby'     => 'title',
 			'order'       => 'ASC',
 			's'           => '',
+			'numberposts' => 5,
 		];
 
 		$args = [

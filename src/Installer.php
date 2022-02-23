@@ -36,7 +36,7 @@ class Installer {
 		  `user_id` int NOT NULL,
 		  `meal_id` int NOT NULL,
 		  `price` decimal(10,4) DEFAULT NULL,
-		  `status` varchar(25) DEFAULT 'unpaid',
+		  `status` varchar(15) DEFAULT 'unpaid',
 		  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 		  `updated_at` timestamp NULL DEFAULT NULL,
 		  PRIMARY KEY (`id`)
