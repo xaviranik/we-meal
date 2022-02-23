@@ -2,14 +2,15 @@
 
 namespace PhpKnight\WeMeal\Api\Controllers;
 
-use PhpKnight\WeMeal\Api\Api;
-use PhpKnight\WeMeal\Models\MealModel;
 use WP_Error;
+use WP_REST_Controller;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
+use PhpKnight\WeMeal\Api\Api;
+use PhpKnight\WeMeal\Models\MealModel;
 
-class MealController extends \WP_REST_Posts_Controller {
+class MealController extends WP_REST_Controller {
 
 	/**
 	 * MealModel instance.
@@ -24,8 +25,6 @@ class MealController extends \WP_REST_Posts_Controller {
 	 * @return void
 	 */
 	public function __construct( MealModel $meal_model ) {
-		parent::__construct( 'meal' );
-
 		$this->namespace = Api::$namespace;
 		$this->rest_base = 'meal';
 
@@ -128,6 +127,17 @@ class MealController extends \WP_REST_Posts_Controller {
 	 * @return bool
 	 */
 	public function get_item_permissions_check( $request ): bool {
+		return is_user_logged_in() && current_user_can( 'read' );
+	}
+
+	/**
+	 * Checks if a given request has access to get items.
+	 *
+	 * @param WP_REST_Request $request
+	 *
+	 * @return bool
+	 */
+	public function get_items_permissions_check( $request ): bool {
 		return is_user_logged_in() && current_user_can( 'read' );
 	}
 }

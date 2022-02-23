@@ -90,7 +90,7 @@ class OrderController extends WP_REST_Controller {
 	 * @return bool
 	 */
 	public function get_item_permissions_check( $request ): bool {
-		return current_user_can( 'manage_meal' );
+		return is_user_logged_in() && current_user_can( 'read' );
 	}
 
 	/**
