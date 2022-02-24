@@ -111,7 +111,7 @@ class Container {
 		$dependencies = [];
 
 		foreach ( $parameters as $parameter ) {
-			$dependency = $parameter->getClass();
+			$dependency = $parameter->getType()->getName();
 
 			if ( is_null( $dependency ) ) {
 				if ( $parameter->isDefaultValueAvailable() ) {
@@ -120,7 +120,7 @@ class Container {
 					throw new DependencyHasNoDefaultValueException( "Class: {$parameter->name} dependency can not be resolved" );
 				}
 			} else {
-				$dependencies[] = $this->get( $dependency->name );
+				$dependencies[] = $this->get( $dependency );
 			}
 		}
 
