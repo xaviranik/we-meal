@@ -111,7 +111,7 @@ class Container {
 		$dependencies = [];
 
 		foreach ( $parameters as $parameter ) {
-			$dependency = $parameter->getType()->getName();
+			$dependency = $parameter->getType() ? $parameter->getType()->getName() : null;
 
 			if ( is_null( $dependency ) ) {
 				if ( $parameter->isDefaultValueAvailable() ) {
