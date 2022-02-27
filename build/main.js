@@ -1879,6 +1879,52 @@ const WeMeal = () => {
 
 /***/ }),
 
+/***/ "./assets/src/api/index.js":
+/*!*********************************!*\
+  !*** ./assets/src/api/index.js ***!
+  \*********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__);
+
+const base = 'wemeal';
+const version = 'v1';
+const Api = {
+  get: endpoint => {
+    return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+      path: `/${base}/${version}/${endpoint}`,
+      method: 'GET'
+    });
+  },
+  post: (endpoint, data) => {
+    return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+      path: `/${base}/${version}/${endpoint}`,
+      method: 'POST',
+      data: data
+    });
+  },
+  put: (endpoint, data) => {
+    return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+      path: `/${base}/${version}/${endpoint}`,
+      method: 'PUT',
+      data: data
+    });
+  },
+  delete: (endpoint, data) => {
+    return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+      path: `/${base}/${version}/${endpoint}`,
+      method: 'DELETE',
+      data: data
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Api);
+
+/***/ }),
+
 /***/ "./assets/src/components/DailyMenu.js":
 /*!********************************************!*\
   !*** ./assets/src/components/DailyMenu.js ***!
@@ -1891,9 +1937,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _MealMenuCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MealMenuCard */ "./assets/src/components/MealMenuCard.js");
+/* harmony import */ var _MealMenuCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MealMenuCard */ "./assets/src/components/MealMenuCard.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api */ "./assets/src/api/index.js");
 
 
 
@@ -1902,12 +1947,16 @@ __webpack_require__.r(__webpack_exports__);
 
 const DailyMenu = () => {
   const [mealMenus, setMealMenus] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [canPlaceOrder, setCanPlaceOrder] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [selectedMealMenu, setSelectedMealMenu] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
-      path: '/wemeal/v1/menus'
-    }).then(response => {
+    _api__WEBPACK_IMPORTED_MODULE_3__["default"].get('menus').then(response => {
       setMealMenus(response);
+    });
+  }, []);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    _api__WEBPACK_IMPORTED_MODULE_3__["default"].get('orders/can-place').then(response => {
+      setCanPlaceOrder(response);
     });
   }, []);
 
@@ -1921,11 +1970,7 @@ const DailyMenu = () => {
     };
 
     if (selectedMealMenu) {
-      _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
-        path: '/wemeal/v1/orders',
-        method: 'POST',
-        data: orderData
-      }).then(response => {
+      _api__WEBPACK_IMPORTED_MODULE_3__["default"].post('orders', orderData).then(response => {
         if (response.success) {
           setSelectedMealMenu(null);
         } else {
@@ -1937,7 +1982,7 @@ const DailyMenu = () => {
 
   const renderMealMenus = () => {
     return mealMenus.map(mealMenu => {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MealMenuCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MealMenuCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
         key: mealMenu.id,
         mealMenu: mealMenu,
         selected: selectedMealMenu === mealMenu.id,
@@ -1946,16 +1991,26 @@ const DailyMenu = () => {
     });
   };
 
+  const renderPlaceOrderButton = () => {
+    if (canPlaceOrder) {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+        className: `wm-button-primary ${selectedMealMenu ? '' : 'wm-disabled'}`,
+        onClick: handlePlaceOrderClick
+      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Place Order', 'we-meal'));
+    } else {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+        className: "wm-button-primary wm-disabled"
+      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Order Placed', 'we-meal'));
+    }
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-card'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-flex wm-items-center wm-justify-between'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     className: 'wm-text-base wm-font-semibold'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Today's Menu", 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: handlePlaceOrderClick,
-    className: `wm-button-primary ${selectedMealMenu ? '' : 'wm-disabled'}`
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Place Order', 'we-meal'))), mealMenus && renderMealMenus()));
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Today's Menu", 'we-meal')), renderPlaceOrderButton()), mealMenus && renderMealMenus()));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DailyMenu);
@@ -2125,9 +2180,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _MealMenuCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MealMenuCard */ "./assets/src/components/MealMenuCard.js");
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.esm.js");
+/* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.esm.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api */ "./assets/src/api/index.js");
 
 
 
@@ -2140,15 +2194,12 @@ const SetDailyMenu = () => {
 
   const loadOptions = (inputValue, callback) => {
     if (inputValue && inputValue.length > 0) {
-      _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
-        path: `/wemeal/v1/meals?search=${inputValue}`,
-        method: 'GET'
-      }).then(response => {
+      _api__WEBPACK_IMPORTED_MODULE_4__["default"].get(`meals?search=${inputValue}`).then(response => {
         const meals = response.map(d => ({
-          'value': d.id,
-          'label': d.name,
-          'formatted_price': d.formatted_price,
-          'description': d.description
+          value: d.id,
+          label: d.name,
+          formatted_price: d.formatted_price,
+          description: d.description
         }));
         return callback(meals);
       });
@@ -2163,12 +2214,8 @@ const SetDailyMenu = () => {
     const meals = selectedMeals.map(d => d.value);
 
     if (meals.length > 0) {
-      _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
-        path: `/wemeal/v1/menus`,
-        method: 'POST',
-        data: {
-          meal_id: meals
-        }
+      _api__WEBPACK_IMPORTED_MODULE_4__["default"].post('menus', {
+        meal_id: meals
       }).then(response => {
         console.log(response);
       });
@@ -2216,7 +2263,7 @@ const SetDailyMenu = () => {
     className: 'wm-text-gray-600 wm-text-sm wm-font-medium'
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search Meal:', 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-mt-2'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_select_async__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_select_async__WEBPACK_IMPORTED_MODULE_3__["default"], {
     onChange: handleChange,
     closeMenuOnSelect: false,
     autoFocus: true,

@@ -595,9 +595,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-mt-6{
   margin-top: 1.5rem;
 }
-.wm-ml-2{
-  margin-left: 0.5rem;
-}
 .wm-ml-1{
   margin-left: 0.25rem;
 }
@@ -609,9 +606,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-h-16{
   height: 4rem;
-}
-.wm-h-96{
-  height: 24rem;
 }
 .wm-h-32{
   height: 8rem;
@@ -664,21 +658,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-.wm-bg-gray-500{
-  --tw-bg-opacity: 1;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
-}
-.wm-bg-gray-300{
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
-}
 .wm-bg-gray-100{
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-.wm-bg-gray-50{
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 .wm-p-3{
   padding: 0.75rem;
@@ -720,10 +702,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-text-gray-600{
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-.wm-text-gray-400{
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 .wm-text-gray-500{
   --tw-text-opacity: 1;

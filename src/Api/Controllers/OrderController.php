@@ -169,6 +169,8 @@ class OrderController extends WP_REST_Controller {
 	 * @return WP_Error|\WP_HTTP_Response|WP_REST_Response
 	 */
 	public function can_place_order( $request ) {
+		$this->order_model->set_user_id( get_current_user_id() );
+
 		$response = $this->order_model->can_user_place_order();
 
 		return rest_ensure_response( $response );

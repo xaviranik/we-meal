@@ -5,12 +5,20 @@ import Api from "../api";
 
 const DailyMenu = () => {
 	const [mealMenus, setMealMenus] = useState([]);
+	const [canPlaceOrder, setCanPlaceOrder] = useState(false);
 	const [selectedMealMenu, setSelectedMealMenu] = useState(null);
 
 	useEffect(() => {
 		Api.get( 'menus' )
 			.then( ( response ) => {
-				setMealMenus( response );
+				setMealMenus(response);
+			} );
+	}, []);
+
+	useEffect(() => {
+		Api.get( 'orders/can-place' )
+			.then( ( response ) => {
+				setCanPlaceOrder(response);
 			} );
 	}, []);
 
@@ -47,12 +55,33 @@ const DailyMenu = () => {
 		} );
 	};
 
+	const renderPlaceOrderButton = () => {
+		if (canPlaceOrder) {
+			return (
+				<button
+					className={`wm-button-primary ${selectedMealMenu ? '' : 'wm-disabled'}`}
+					onClick={handlePlaceOrderClick}
+				>
+					{__('Place Order', 'we-meal')}
+				</button>
+			);
+		} else {
+			return (
+				<button
+					className="wm-button-primary wm-disabled"
+				>
+					{__('Order Placed', 'we-meal')}
+				</button>
+			);
+		}
+	};
+
 	return (
 		<>
 			<div className={'wm-card'}>
 				<div className={'wm-flex wm-items-center wm-justify-between'}>
 					<h1 className={'wm-text-base wm-font-semibold'}>{__( "Today's Menu", 'we-meal' )}</h1>
-					<button onClick={handlePlaceOrderClick} className={`wm-button-primary ${selectedMealMenu ? '' : 'wm-disabled'}`}>{__( 'Place Order', 'we-meal' )}</button>
+					{renderPlaceOrderButton()}
 				</div>
 
 				{mealMenus && renderMealMenus()}

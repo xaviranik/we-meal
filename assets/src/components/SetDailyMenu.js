@@ -11,11 +11,11 @@ const SetDailyMenu = () => {
 		if ( inputValue && inputValue.length > 0 ) {
 			Api.get(`meals?search=${inputValue}`)
 				.then((response) => {
-					const meals = response.data.map(d => ({
-						'value' : d.id,
-						'label' : d.name,
-						'formatted_price' : d.formatted_price,
-						'description' : d.description,
+					const meals = response.map(d => ({
+						value : d.id,
+						label : d.name,
+						formatted_price : d.formatted_price,
+						description : d.description,
 					}));
 
 					return callback(meals);
