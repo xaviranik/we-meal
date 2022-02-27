@@ -582,6 +582,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
+.-wm-mx-3{
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+.-wm-mx-4{
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
 .wm-mt-4{
   margin-top: 1rem;
 }
@@ -590,6 +598,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-mt-6{
   margin-top: 1.5rem;
+}
+.-wm-ml-2{
+  margin-left: -0.5rem;
 }
 .wm-flex{
   display: flex;
@@ -627,6 +638,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-border-2{
   border-width: 2px;
 }
+.wm-border-b{
+  border-bottom-width: 1px;
+}
 .wm-border-slate-100{
   --tw-border-opacity: 1;
   border-color: rgb(241 245 249 / var(--tw-border-opacity));
@@ -634,6 +648,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-border-slate-600{
   --tw-border-opacity: 1;
   border-color: rgb(71 85 105 / var(--tw-border-opacity));
+}
+.wm-border-gray-600{
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity));
 }
 .wm-bg-white{
   --tw-bg-opacity: 1;
@@ -665,6 +683,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+.wm-text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 .wm-font-semibold{
   font-weight: 600;
@@ -699,10 +721,16 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-left: 0 !important;
   }
 }
+
+input[type=text]:focus {
+  box-shadow: 0 0 0 1px transparent;
+}
+
 .hover\:wm-border-slate-600:hover{
   --tw-border-opacity: 1;
   border-color: rgb(71 85 105 / var(--tw-border-opacity));
 }
+
 @media (min-width: 768px){
   .md\:wm-mx-8{
     margin-left: 2rem;
