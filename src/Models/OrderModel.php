@@ -175,14 +175,30 @@ class OrderModel {
 	 * @return string[]|WP_Error
 	 */
 	public function save(): array {
+		if ( ! $this->can_user_place_order() ) {
+			return [
+				'success' => false,
+				'message' => __( 'You have already ordered today.', 'we-meal' ),
+			];
+		}
+
+		return $this->insert_oder();
+	}
+
+	/**
+	 * Insert the order to the database.
+	 *
+	 * @return array|WP_Error
+	 */
+	private function insert_oder(): array {
 		global $wpdb;
 
 		$created = $wpdb->insert(
 			$wpdb->prefix . 'we_meal_orders',
 			[
-				'user_id'    => $this->get_user_id(),
-				'meal_id'    => $this->get_meal_id(),
-				'price'      => $this->get_price(),
+				'user_id' => $this->get_user_id(),
+				'meal_id' => $this->get_meal_id(),
+				'price'   => $this->get_price(),
 			]
 		);
 
@@ -198,5 +214,25 @@ class OrderModel {
 			'success' => true,
 			'message' => __( 'Order created successfully', 'we-meal' ),
 		];
+	}
+
+	/**
+	 * Gets the count of orders for current user for current day.
+	 *
+	 * @return bool
+	 */
+	public function can_user_place_order(): bool {
+		global $wpdb;
+
+		$count = (int) $wpdb->get_var(
+			$wpdb->prepare(
+				"SELECT COUNT(*)
+					FROM {$wpdb->prefix}we_meal_orders
+					WHERE user_id = %d AND DATE(created_at) = CURDATE()",
+				$this->get_user_id()
+			)
+		);
+
+		return $count === 0;
 	}
 }

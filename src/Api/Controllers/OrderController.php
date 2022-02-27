@@ -80,6 +80,19 @@ class OrderController extends WP_REST_Controller {
 				'schema' => [ $this, 'get_item_schema' ],
 			]
 		);
+
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/can-place',
+			[
+				[
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'can_place_order' ],
+					'permission_callback' => [ $this, 'get_item_permissions_check' ],
+				],
+				'schema' => [ $this, 'get_item_schema' ],
+			]
+		);
 	}
 
 	/**
@@ -146,5 +159,18 @@ class OrderController extends WP_REST_Controller {
 		$this->schema = $schema;
 
 		return $this->add_additional_fields_schema( $this->schema );
+	}
+
+	/**
+	 * Checks if a user can place an order on current day.
+	 *
+	 * @param $request
+	 *
+	 * @return WP_Error|\WP_HTTP_Response|WP_REST_Response
+	 */
+	public function can_place_order( $request ) {
+		$response = $this->order_model->can_user_place_order();
+
+		return rest_ensure_response( $response );
 	}
 }
