@@ -31,6 +31,18 @@
 	@apply wm-text-gray-900;
 
 	font-family: 'Poppins', sans-serif !important;
+
+	.fc-toolbar-title {
+		@apply wm-text-base wm-font-medium;
+	}
+
+	.fc-button-primary {
+		@apply wm-button-primary wm-px-2 wm-py-1 wm-capitalize wm-font-medium;
+	}
+
+	.fc-prev-button, .fc-next-button {
+		@apply wm-button-outline wm-px-1 wm-py-1;
+	}
 }
 
 #wpcontent {
