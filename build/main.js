@@ -13295,6 +13295,49 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const fetchEvents = (info, successCallback, failureCallback) => {
+  successCallback(Array.prototype.slice.call([{
+    title: 'event1',
+    date: '2022-02-01'
+  }, {
+    title: 'event2',
+    date: '2022-02-02'
+  }, {
+    title: 'event3',
+    date: '2022-02-03'
+  }, {
+    title: 'event4',
+    date: '2022-02-04'
+  }, {
+    title: 'event5',
+    date: '2022-02-05'
+  }, {
+    title: 'event8',
+    date: '2022-02-08'
+  }, {
+    title: 'event9',
+    date: '2022-02-09'
+  }, {
+    title: 'event10',
+    date: '2022-02-10'
+  }, {
+    title: 'event11',
+    date: '2022-02-11'
+  }, {
+    title: 'event12',
+    date: '2022-02-12'
+  }, {
+    title: 'event15',
+    date: '2022-02-15'
+  }, {
+    title: 'event16',
+    date: '2022-02-16'
+  }, {
+    title: 'event17',
+    date: '2022-02-17'
+  }]));
+};
+
 const MealCalendar = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-card'
@@ -13305,13 +13348,7 @@ const MealCalendar = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_fullcalendar_react__WEBPACK_IMPORTED_MODULE_2__["default"], {
     plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_3__["default"]],
     initialView: "dayGridMonth",
-    events: [{
-      title: 'Rice Chicken',
-      date: '2022-02-11'
-    }, {
-      title: 'Rice Beef',
-      date: '2022-02-14'
-    }]
+    events: fetchEvents
   })));
 };
 

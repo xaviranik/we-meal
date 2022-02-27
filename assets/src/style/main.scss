@@ -41,7 +41,11 @@
 	}
 
 	.fc-prev-button, .fc-next-button {
-		@apply wm-button-outline wm-px-1 wm-py-1;
+		@apply wm-button-outline wm-px-1 wm-py-1 wm-ml-1;
+	}
+
+	.fc-event-title-container {
+		@apply wm-bg-indigo-50 wm-text-indigo-700 wm-border-indigo-700 wm-font-medium;
 	}
 }
 

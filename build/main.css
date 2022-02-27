@@ -1730,10 +1730,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 #we-meal-app .fc-prev-button, #we-meal-app .fc-next-button, .react-responsive-modal-root .fc-prev-button, .react-responsive-modal-root .fc-next-button{
+  margin-left: 0.25rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+#we-meal-app .fc-event-title-container, .react-responsive-modal-root .fc-event-title-container{
+  --tw-border-opacity: 1;
+  border-color: rgb(67 56 202 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 242 255 / var(--tw-bg-opacity));
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(67 56 202 / var(--tw-text-opacity));
 }
 
 #wpcontent {
