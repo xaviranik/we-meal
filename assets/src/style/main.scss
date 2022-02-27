@@ -27,10 +27,10 @@
 	}
 }
 
-#we-meal-app {
+#we-meal-app, .react-responsive-modal-root {
 	@apply wm-text-gray-900;
 
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Poppins', sans-serif !important;
 }
 
 #wpcontent {

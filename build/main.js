@@ -2063,11 +2063,8 @@ const MealMenuCard = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: 'wm-font-semibold'
   }, mealMenu.name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-text-gray-600 wm-mt-2',
-    dangerouslySetInnerHTML: {
-      __html: mealMenu.description
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: 'wm-text-gray-600 wm-mt-2'
+  }, mealMenu.description), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: 'wm-font-semibold wm-text-base wm-mt-6'
   }, mealMenu.formatted_price)));
 };
@@ -2139,7 +2136,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const SetDailyMenu = () => {
-  const [searchedMeal, setSearchedMeal] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [selectedMeals, setSelectedMeals] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
 
   const loadOptions = (inputValue, callback) => {
     if (inputValue && inputValue.length > 0) {
@@ -2147,14 +2144,70 @@ const SetDailyMenu = () => {
         path: `/wemeal/v1/meals?search=${inputValue}`,
         method: 'GET'
       }).then(response => {
-        setSearchedMeal(response);
         const meals = response.map(d => ({
-          "value": d.id,
-          "label": d.name
+          'value': d.id,
+          'label': d.name,
+          'formatted_price': d.formatted_price,
+          'description': d.description
         }));
         return callback(meals);
       });
     }
+  };
+
+  const handleChange = selectedOptions => {
+    setSelectedMeals(selectedOptions);
+  };
+
+  const handleSetDailyMealMenu = () => {
+    const meals = selectedMeals.map(d => d.value);
+
+    if (meals.length > 0) {
+      _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
+        path: `/wemeal/v1/menus`,
+        method: 'POST',
+        data: {
+          meal_id: meals
+        }
+      }).then(response => {
+        console.log(response);
+      });
+    }
+  };
+
+  const renderMealMenus = () => {
+    return selectedMeals.map(mealMenu => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MealMenuCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        key: mealMenu.value,
+        mealMenu: {
+          id: mealMenu.value,
+          name: mealMenu.label,
+          formatted_price: mealMenu.formatted_price,
+          description: mealMenu.description
+        }
+      });
+    });
+  };
+
+  const renderNoMealSelectedContent = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: 'wm-card wm-bg-gray-100 wm-mt-4 wm-h-32 wm-flex wm-items-center wm-justify-center'
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: 'wm-flex wm-items-center'
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "wm-h-6 wm-w-6 wm-text-gray-500",
+      fill: "none",
+      viewBox: "0 0 24 24",
+      stroke: "currentColor"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeWidth: 2,
+      d: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      className: 'wm-text-sm wm-text-gray-600 wm-ml-1'
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select meals to set daily menu.', 'we-meal'))));
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2164,18 +2217,17 @@ const SetDailyMenu = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search Meal:', 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-mt-2'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_select_async__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    onChange: handleChange,
+    closeMenuOnSelect: false,
+    autoFocus: true,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search meal'),
+    cacheOptions: true,
     isMulti: true,
     defaultOptions: true,
     loadOptions: loadOptions
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MealMenuCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    mealMenu: {
-      name: 'test meal',
-      description: 'test description',
-      formatted_price: '120'
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: () => {},
-    className: `wm-button-primary wm-mt-4`
+  })), selectedMeals.length > 0 ? renderMealMenus() : renderNoMealSelectedContent(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: handleSetDailyMealMenu,
+    className: `wm-button-primary wm-mt-4 ${selectedMeals.length > 0 ? '' : 'wm-disabled'}`
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Set Daily Menu', 'we-meal')));
 };
 
