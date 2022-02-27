@@ -16,6 +16,8 @@ class Customizer implements HookableInterface {
 		add_filter( 'enter_title_here', [ $this, 'custom_enter_title' ] );
 		add_filter( 'manage_meal_posts_columns', [ $this, 'set_custom_columns' ] );
 		add_action( 'manage_meal_posts_custom_column', [ $this, 'custom_column_data' ], 10, 2 );
+		add_action( 'admin_head', [ $this, 'remove_media_controls' ] );
+		add_filter( 'tiny_mce_before_init', [ $this, 'custom_tiny_mce_settings' ] );
 	}
 
 	/**
@@ -57,6 +59,34 @@ class Customizer implements HookableInterface {
 			$price = get_post_meta( $post_id, PriceMetaBox::$price_meta_key, true );
 			echo esc_html( Helper::format_price( $price ) );
 		}
+	}
+
+	/**
+	 * Removes the media controls from the Meal post type.
+	 *
+	 * @return void
+	 */
+	public function remove_media_controls(): void {
+		if ( 'meal' === get_post_type() ) {
+			remove_action( 'media_buttons', 'media_buttons' );
+		}
+	}
+
+	/**
+	 * Customizes the TinyMCE settings for the Meal post type.
+	 *
+	 * @param $in
+	 *
+	 * @return array
+	 */
+	public function custom_tiny_mce_settings( $in ): array {
+		if ( 'meal' === get_post_type() ) {
+			$in['toolbar1'] = '';
+			$in['toolbar2'] = '';
+			$in['toolbar'] = false;
+		}
+
+		return $in;
 	}
 
 }
