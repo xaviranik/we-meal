@@ -1,17 +1,17 @@
 import { __ } from '@wordpress/i18n';
 import MealMenuCard from "./MealMenuCard";
-import apiFetch from "@wordpress/api-fetch";
 import AsyncSelect from 'react-select/async';
 import { useState } from '@wordpress/element';
+import Api from "../api";
 
 const SetDailyMenu = () => {
 	const [ selectedMeals, setSelectedMeals ] = useState([]);
 
 	const loadOptions = (inputValue, callback) => {
 		if ( inputValue && inputValue.length > 0 ) {
-			apiFetch( { path: `/wemeal/v1/meals?search=${inputValue}`, method: 'GET' } )
+			Api.get(`meals?search=${inputValue}`)
 				.then((response) => {
-					const meals = response.map(d => ({
+					const meals = response.data.map(d => ({
 						'value' : d.id,
 						'label' : d.name,
 						'formatted_price' : d.formatted_price,
@@ -31,7 +31,7 @@ const SetDailyMenu = () => {
 		const meals = selectedMeals.map(d => d.value);
 
 		if ( meals.length > 0 ) {
-			apiFetch( { path: `/wemeal/v1/menus`, method: 'POST', data: { meal_id: meals } } )
+			Api.post('menus', { meal_id: meals })
 				.then((response) => {
 					console.log(response);
 				} );

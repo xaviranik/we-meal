@@ -2,13 +2,13 @@
 
 namespace PhpKnight\WeMeal\Api\Controllers;
 
-use PhpKnight\WeMeal\Models\OrderModel;
 use WP_Error;
 use WP_REST_Controller;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
 use PhpKnight\WeMeal\Api\Api;
+use PhpKnight\WeMeal\Models\OrderModel;
 
 class OrderController extends WP_REST_Controller {
 

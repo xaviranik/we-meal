@@ -1,16 +1,16 @@
 import { __ } from "@wordpress/i18n";
-import apiFetch from "@wordpress/api-fetch";
 import { useState, useEffect } from "@wordpress/element";
 import MealMenuCard from "./MealMenuCard";
+import Api from "../api";
 
 const DailyMenu = () => {
 	const [mealMenus, setMealMenus] = useState([]);
 	const [selectedMealMenu, setSelectedMealMenu] = useState(null);
 
 	useEffect(() => {
-		apiFetch( { path: '/wemeal/v1/menus' } )
-			.then((response) => {
-				setMealMenus(response);
+		Api.get( 'menus' )
+			.then( ( response ) => {
+				setMealMenus( response );
 			} );
 	}, []);
 
@@ -23,14 +23,14 @@ const DailyMenu = () => {
 			meal_id: selectedMealMenu,
 		};
 		if (selectedMealMenu) {
-			apiFetch( { path: '/wemeal/v1/orders', method: 'POST', data: orderData } )
-				.then((response) => {
+			Api.post( 'orders', orderData )
+				.then( ( response ) => {
 					if (response.success) {
 						setSelectedMealMenu(null);
 					} else {
 						console.log(response.message);
 					}
-				} );
+			} );
 		}
 	};
 
