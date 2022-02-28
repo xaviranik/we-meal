@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { useState, useEffect } from "@wordpress/element";
 import MealMenuCard from "./MealMenuCard";
+import { toast } from 'react-toastify';
 import Api from "../api";
 
 const DailyMenu = () => {
@@ -35,6 +36,7 @@ const DailyMenu = () => {
 				.then( ( response ) => {
 					if (response.success) {
 						setSelectedMealMenu(null);
+						toast.success(response.message);
 					} else {
 						console.log(response.message);
 					}

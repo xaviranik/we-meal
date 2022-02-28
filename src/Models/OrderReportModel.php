@@ -111,8 +111,8 @@ class OrderReportModel {
 				FROM
 					{$wpdb->prefix}we_meal_orders
 				WHERE
-					user_id = %d
-					AND created_at BETWEEN %s AND %s;",
+					(user_id = %d
+					AND created_at BETWEEN %s AND %s);",
 				$this->get_user_id(),
 				$this->get_start_date(),
 				$this->get_end_date()

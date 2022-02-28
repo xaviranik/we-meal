@@ -26,7 +26,8 @@
     "@wordpress/i18n": "^4.3.1",
     "react-responsive-modal": "^6.2.0",
     "react-router-dom": "^6.2.1",
-    "react-select": "^5.2.2"
+    "react-select": "^5.2.2",
+    "react-toastify": "^8.2.0"
   },
   "scripts": {
     "build": "wp-scripts build --entry ./assets/src/index.js",
