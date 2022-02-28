@@ -14,7 +14,22 @@ class OrderReportModel {
 	 * @return array
 	 */
 	public function get_meal_calendar_data_by_user( int $user_id, string $start_date, string $end_date ): array {
-		return $this->get_order_data_by_user( $user_id, $start_date, $end_date );
+		$calendar_data = [];
+
+		$orders = $this->get_order_data_by_user( $user_id, $start_date, $end_date );
+
+		foreach ( $orders as $order ) {
+			$calendar = new MealCalendarModel();
+			$calendar->set_date( $order->created_at )
+					->set_meal_id( $order->meal_id );
+
+			$calendar_data[] = [
+				'event' => $calendar->get_meal_name(),
+				'date'  => $calendar->get_date(),
+			];
+		}
+
+		return $calendar_data;
 	}
 
 	/**
