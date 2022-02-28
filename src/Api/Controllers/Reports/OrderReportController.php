@@ -65,6 +65,39 @@ class OrderReportController extends WP_REST_Controller {
 				'schema' => [ $this, 'get_public_item_schema' ],
 			]
 		);
+
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->rest_base . '/user/order/stat',
+			[
+				[
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_order_stat' ],
+					'permission_callback' => [ $this, 'get_order_report_permissions_check' ],
+					'args'                => [
+						'user_id' => [
+							'description'       => __( 'Unique identifier for the user.', 'we-meal' ),
+							'required'          => false,
+							'type'              => 'integer',
+							'sanitize_callback' => 'absint',
+						],
+						'start_date' => [
+							'description'       => __( 'Start date for the report.', 'we-meal' ),
+							'required'          => true,
+							'type'              => 'string',
+							'sanitize_callback' => 'sanitize_text_field',
+						],
+						'end_date' => [
+							'description'       => __( 'End date for the report.', 'we-meal' ),
+							'required'          => true,
+							'type'              => 'string',
+							'sanitize_callback' => 'sanitize_text_field',
+						],
+					],
+				],
+				'schema' => [ $this, 'get_public_item_schema' ],
+			]
+		);
 	}
 
 	/**
@@ -112,9 +145,33 @@ class OrderReportController extends WP_REST_Controller {
 	public function get_meal_calendar_data( WP_REST_Request $request ) {
 		$user_id = $request->get_param( 'user_id' ) ?? get_current_user_id();
 
-		$calendar_data = $this->order_report_model
-						->get_meal_calendar_data_by_user( $user_id, $request->get_param( 'start_date' ), $request->get_param( 'end_date' ) );
+		$this->order_report_model
+			->set_user_id( $user_id )
+			->set_start_date( $request->get_param( 'start_date' ) )
+			->set_end_date( $request->get_param( 'end_date' ) );
+
+		$calendar_data = $this->order_report_model->get_meal_calendar_data_by_user();
 
 		return rest_ensure_response( $calendar_data );
+	}
+
+	/**
+	 * Gets meal calendar data.
+	 *
+	 * @param WP_REST_Request $request
+	 *
+	 * @return \WP_Error|\WP_HTTP_Response|\WP_REST_Response
+	 */
+	public function get_order_stat( WP_REST_Request $request ) {
+		$user_id = $request->get_param( 'user_id' ) ?? get_current_user_id();
+
+		$this->order_report_model
+			->set_user_id( $user_id )
+			->set_start_date( $request->get_param( 'start_date' ) )
+			->set_end_date( $request->get_param( 'end_date' ) );
+
+		$order_stat = $this->order_report_model->get_order_stat_by_user();
+
+		return rest_ensure_response( $order_stat );
 	}
 }
