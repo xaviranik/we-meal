@@ -10,6 +10,25 @@ class OrderReportModel {
 	protected $user_id;
 
 	/**
+	 * @var string
+	 */
+	protected $start_date;
+
+	/**
+	 * @var string
+	 */
+	protected $end_date;
+
+	/**
+	 * @var OrderStatModel
+	 */
+	protected $order_stat_model;
+
+	public function __construct( OrderStatModel $order_stat_model ) {
+		$this->order_stat_model = $order_stat_model;
+	}
+
+	/**
 	 * @return int
 	 */
 	public function get_user_id(): int {
@@ -62,16 +81,6 @@ class OrderReportModel {
 
 		return $this;
 	}
-
-	/**
-	 * @var string
-	 */
-	protected $start_date;
-
-	/**
-	 * @var string
-	 */
-	protected $end_date;
 
 	/**
 	 * Gets the meal calendar data.
@@ -142,10 +151,37 @@ class OrderReportModel {
 			)
 		);
 
+		$this->order_stat_model->set_user_id( $this->get_user_id() )
+		    ->set_total_price( $result->total_price )
+		    ->set_total_orders( $result->total_orders );
+
 		return [
-			'user_id'      => $this->get_user_id(),
-			'total_price'  => $result->total_price,
-			'total_orders' => $result->total_orders,
+			'user_id'      => $this->order_stat_model->get_user_id(),
+			'total_price'  => $this->order_stat_model->get_total_price(),
+			'total_orders' => $this->order_stat_model->get_total_orders(),
 		];
+	}
+
+	/**
+	 * Gets order overview data.
+	 *
+	 * @return array
+	 */
+	public function get_order_overview(): array {
+		global $wpdb;
+
+		return $wpdb->get_results(
+			$wpdb->prepare(
+				'SELECT
+				meal_id, COUNT(*) as order_count
+			FROM
+				wp_we_meal_orders
+			WHERE
+				created_at >= CURDATE()
+				AND created_at < CURDATE() + INTERVAL 1 DAY
+			GROUP BY
+				meal_id;'
+			)
+		);
 	}
 }

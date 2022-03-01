@@ -35,6 +35,20 @@ class OrderReportController extends WP_REST_Controller {
 	public function register_routes() {
 		register_rest_route(
 			$this->namespace,
+			'/' . $this->rest_base . '/order/overview',
+			[
+				[
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_order_overview' ],
+					'permission_callback' => [ $this, 'get_order_overview_permissions_check' ],
+					'args'                => [],
+				],
+				'schema' => [ $this, 'get_public_item_schema' ],
+			]
+		);
+
+		register_rest_route(
+			$this->namespace,
 			'/' . $this->rest_base . '/user/meal-calendar',
 			[
 				[
@@ -124,6 +138,17 @@ class OrderReportController extends WP_REST_Controller {
 	}
 
 	/**
+	 * Checks if a given request has access to get item.
+	 *
+	 * @param WP_REST_Request $request
+	 *
+	 * @return bool
+	 */
+	public function get_order_overview_permissions_check( WP_REST_Request $request ): bool {
+		return current_user_can( 'manage_meal' );
+	}
+
+	/**
 	 * Gets user order report.
 	 *
 	 * @param WP_REST_Request $request
@@ -132,6 +157,17 @@ class OrderReportController extends WP_REST_Controller {
 	 */
 	public function get_user_order_report( WP_REST_Request $request ): \WP_REST_Response {
 		return rest_ensure_response( $request->get_param( 'id' ) );
+	}
+
+	/**
+	 * Gets order overview report.
+	 *
+	 * @param WP_REST_Request $request
+	 *
+	 * @return \WP_REST_Response
+	 */
+	public function get_order_overview( WP_REST_Request $request ): \WP_REST_Response {
+		return rest_ensure_response( $this->order_report_model->get_order_overview() );
 	}
 
 

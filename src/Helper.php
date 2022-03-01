@@ -4,6 +4,8 @@ namespace PhpKnight\WeMeal;
 
 class Helper {
 
+	protected static $currency_symbol = '৳';
+
 	/**
 	 * Format price with currency symbol
 	 *
@@ -16,7 +18,7 @@ class Helper {
 	 */
 	public static function format_price( $price, int $decimal = 2, string $decimal_separator = '.', string $thousand_separator = ',' ): string {
 		$price = floatval( $price );
-		return '৳' . number_format( $price, $decimal, $decimal_separator, $thousand_separator );
+		return self::$currency_symbol . number_format( $price, $decimal, $decimal_separator, $thousand_separator );
 	}
 
 }
