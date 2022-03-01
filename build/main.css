@@ -2463,6 +2463,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-ml-1{
   margin-left: 0.25rem;
 }
+.wm-ml-2{
+  margin-left: 0.5rem;
+}
 .wm-flex{
   display: flex;
 }
@@ -2475,14 +2478,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-h-32{
   height: 8rem;
 }
-.wm-h-6{
-  height: 1.5rem;
-}
-.wm-h-4{
-  height: 1rem;
-}
 .wm-h-5{
   height: 1.25rem;
+}
+.wm-h-8{
+  height: 2rem;
+}
+.wm-h-10{
+  height: 2.5rem;
+}
+.wm-h-7{
+  height: 1.75rem;
 }
 .wm-w-full{
   width: 100%;
@@ -2490,20 +2496,26 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-w-80{
   width: 20rem;
 }
-.wm-w-6{
-  width: 1.5rem;
-}
-.wm-w-4{
-  width: 1rem;
-}
 .wm-w-5{
   width: 1.25rem;
+}
+.wm-w-8{
+  width: 2rem;
+}
+.wm-w-10{
+  width: 2.5rem;
+}
+.wm-w-7{
+  width: 1.75rem;
 }
 .wm-cursor-pointer{
   cursor: pointer;
 }
 .wm-grid-cols-1{
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.wm-flex-col{
+  flex-direction: column;
 }
 .wm-items-center{
   align-items: center;
@@ -2531,6 +2543,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-border-opacity: 1;
   border-color: rgb(71 85 105 / var(--tw-border-opacity));
 }
+.wm-border-indigo-600{
+  --tw-border-opacity: 1;
+  border-color: rgb(79 70 229 / var(--tw-border-opacity));
+}
 .wm-bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -2539,8 +2555,27 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
+.wm-bg-indigo-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 231 255 / var(--tw-bg-opacity));
+}
+.wm-bg-red-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+.wm-bg-indigo-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+}
+.wm-bg-indigo-50{
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 242 255 / var(--tw-bg-opacity));
+}
 .wm-p-3{
   padding: 0.75rem;
+}
+.wm-p-6{
+  padding: 1.5rem;
 }
 .wm-px-6{
   padding-left: 1.5rem;
@@ -2558,6 +2593,30 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+.wm-px-2{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.wm-py-1{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.wm-px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.wm-py-6{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.wm-px-5{
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.wm-py-5{
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
 .wm-text-base{
   font-size: 1rem;
   line-height: 1.5rem;
@@ -2570,11 +2629,34 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+.wm-text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.wm-text-6xl{
+  font-size: 3.75rem;
+  line-height: 1;
+}
+.wm-text-5xl{
+  font-size: 3rem;
+  line-height: 1;
+}
+.wm-text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.wm-text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
 .wm-font-semibold{
   font-weight: 600;
 }
 .wm-font-medium{
   font-weight: 500;
+}
+.wm-font-thin{
+  font-weight: 100;
 }
 .wm-text-gray-600{
   --tw-text-opacity: 1;
@@ -2583,6 +2665,26 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-text-gray-500{
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+.wm-text-indigo-700{
+  --tw-text-opacity: 1;
+  color: rgb(67 56 202 / var(--tw-text-opacity));
+}
+.wm-text-indigo-500{
+  --tw-text-opacity: 1;
+  color: rgb(99 102 241 / var(--tw-text-opacity));
+}
+.wm-text-red-500{
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+.wm-text-indigo-400{
+  --tw-text-opacity: 1;
+  color: rgb(129 140 248 / var(--tw-text-opacity));
+}
+.wm-text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .wm-shadow-sm{
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);

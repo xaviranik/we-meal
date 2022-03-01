@@ -9,19 +9,17 @@ const SetDailyMenu = () => {
 	const [ selectedMeals, setSelectedMeals ] = useState([]);
 
 	const loadOptions = (inputValue, callback) => {
-		if ( inputValue && inputValue.length > 0 ) {
-			Api.get(`meals?search=${inputValue}`)
-				.then((response) => {
-					const meals = response.map(d => ({
-						value : d.id,
-						label : d.name,
-						formatted_price : d.formatted_price,
-						description : d.description,
-					}));
+		Api.get(`meals?search=${inputValue}`)
+			.then((response) => {
+				const meals = response.map(d => ({
+					value : d.id,
+					label : d.name,
+					formatted_price : d.formatted_price,
+					description : d.description,
+				}));
 
-					return callback(meals);
-				} );
-		}
+				return callback(meals);
+			} );
 	};
 
 	const handleChange = (selectedOptions) => {

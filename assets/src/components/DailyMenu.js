@@ -82,7 +82,7 @@ const DailyMenu = () => {
 		<>
 			<div className={'wm-card'}>
 				<div className={'wm-flex wm-items-center wm-justify-between'}>
-					<h1 className={'wm-text-base wm-font-semibold'}>{__( "Today's Menu", 'we-meal' )}</h1>
+					<h1 className={'wm-text-xl wm-font-semibold'}>{__( "Today's Menu", 'we-meal' )}</h1>
 					{renderPlaceOrderButton()}
 				</div>
 

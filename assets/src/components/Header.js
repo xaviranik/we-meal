@@ -1,4 +1,4 @@
-import {__} from "@wordpress/i18n";
+import { __ } from "@wordpress/i18n";
 import ModalPopper from "./ModalPopper";
 import { useState } from '@wordpress/element';
 import SetDailyMenu from "./SetDailyMenu";

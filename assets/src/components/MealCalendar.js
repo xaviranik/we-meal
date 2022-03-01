@@ -62,7 +62,7 @@ const fetchEvents = (info, successCallback, failureCallback) => {
 const MealCalendar = () => {
 	return (
 		<div className={'wm-card'}>
-			<h1 className={'wm-text-base wm-font-semibold'}>{__( 'Meal Calendar', 'we-meal' )}</h1>
+			<h1 className={'wm-text-xl wm-font-semibold'}>{__( 'Meal Calendar', 'we-meal' )}</h1>
 
 			<div className={'wm-mt-4'}>
 				<FullCalendar
