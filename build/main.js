@@ -13307,52 +13307,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _fullcalendar_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fullcalendar/react */ "./node_modules/@fullcalendar/react/dist/main.js");
 /* harmony import */ var _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fullcalendar/daygrid */ "./node_modules/@fullcalendar/daygrid/main.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api */ "./assets/src/api/index.js");
+
 
 
 
 
 
 const fetchEvents = (info, successCallback, failureCallback) => {
-  successCallback(Array.prototype.slice.call([{
-    title: 'event1',
-    date: '2022-02-01'
-  }, {
-    title: 'event2',
-    date: '2022-02-02'
-  }, {
-    title: 'event3',
-    date: '2022-02-03'
-  }, {
-    title: 'event4',
-    date: '2022-02-04'
-  }, {
-    title: 'event5',
-    date: '2022-02-05'
-  }, {
-    title: 'event8',
-    date: '2022-02-08'
-  }, {
-    title: 'event9',
-    date: '2022-02-09'
-  }, {
-    title: 'event10',
-    date: '2022-02-10'
-  }, {
-    title: 'event11',
-    date: '2022-02-11'
-  }, {
-    title: 'event12',
-    date: '2022-02-12'
-  }, {
-    title: 'event15',
-    date: '2022-02-15'
-  }, {
-    title: 'event16',
-    date: '2022-02-16'
-  }, {
-    title: 'event17',
-    date: '2022-02-17'
-  }]));
+  _api__WEBPACK_IMPORTED_MODULE_4__["default"].get(`reports/user/meal-calendar?start_date=${info.startStr.substring(0, 10)}&end_date=${info.endStr.substring(0, 10)}`).then(response => {
+    successCallback(Array.prototype.slice.call(response));
+  });
 };
 
 const MealCalendar = () => {

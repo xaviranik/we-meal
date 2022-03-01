@@ -1,62 +1,13 @@
 import { __ } from '@wordpress/i18n';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import Api from "../api";
 
 const fetchEvents = (info, successCallback, failureCallback) => {
-	successCallback(Array.prototype.slice.call([
-		{
-			title: 'event1',
-			date: '2022-02-01',
-		},
-		{
-			title: 'event2',
-			date: '2022-02-02',
-		},
-		{
-			title: 'event3',
-			date: '2022-02-03',
-		},
-		{
-			title: 'event4',
-			date: '2022-02-04',
-		},
-		{
-			title: 'event5',
-			date: '2022-02-05',
-		},
-		{
-			title: 'event8',
-			date: '2022-02-08',
-		},
-		{
-			title: 'event9',
-			date: '2022-02-09',
-		},
-		{
-			title: 'event10',
-			date: '2022-02-10',
-		},
-		{
-			title: 'event11',
-			date: '2022-02-11',
-		},
-		{
-			title: 'event12',
-			date: '2022-02-12',
-		},
-		{
-			title: 'event15',
-			date: '2022-02-15',
-		},
-		{
-			title: 'event16',
-			date: '2022-02-16',
-		},
-		{
-			title: 'event17',
-			date: '2022-02-17'
-		}
-	] ));
+	Api.get(`reports/user/meal-calendar?start_date=${info.startStr.substring(0,10)}&end_date=${info.endStr.substring(0,10)}`)
+		.then((response) => {
+			successCallback(Array.prototype.slice.call(response));
+		})
 }
 
 const MealCalendar = () => {

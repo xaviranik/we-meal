@@ -98,7 +98,7 @@ class OrderReportModel {
 					->set_meal_id( $order->meal_id );
 
 			$calendar_data[] = [
-				'event' => $calendar->get_meal_name(),
+				'title' => $calendar->get_meal_name(),
 				'date'  => $calendar->get_date(),
 			];
 		}
