@@ -1,6 +1,18 @@
 import {__} from "@wordpress/i18n";
+import {useEffect, useState} from "@wordpress/element";
+import Api from "../api";
 
-const Overview = () => {
+const Stat = () => {
+	const [stat, setStat] = useState({});
+
+	useEffect(() => {
+		Api.get('reports/user/order/stat')
+			.then((response) => {
+				setStat(response);
+			});
+	}, []);
+
+
 	return(
 		<div className={'wm-grid wm-grid-cols-1 md:wm-grid-cols-2 wm-gap-4'}>
 			<div className={'wm-card'}>
@@ -10,7 +22,7 @@ const Overview = () => {
 					<span className={'wm-text-gray-600 wm-text-sm wm-font-thin wm-mt-6'}>{__('this month', 'we-meals')}</span>
 
 					<div className={'wm-mt-4 wm-flex wm-items-center wm-justify-between'}>
-						<h1 className={'wm-font-semibold wm-text-4xl'}>18</h1>
+						<h1 className={'wm-font-semibold wm-text-4xl'}>{stat && stat.total_orders}</h1>
 						<div className={'wm-bg-indigo-100 wm-px-5 wm-py-5 wm-rounded-md'}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +46,7 @@ const Overview = () => {
 					<span className={'wm-text-gray-600 wm-text-sm wm-font-thin wm-mt-6'}>{__('this month', 'we-meals')}</span>
 
 					<div className={'wm-mt-4 wm-flex wm-items-center wm-justify-between'}>
-						<h1 className={'wm-font-semibold wm-text-4xl'}>৳250</h1>
+						<h1 className={'wm-font-semibold wm-text-4xl'}>{stat && stat.total_price}</h1>
 						<div className={'wm-bg-indigo-100 wm-px-5 wm-py-5 wm-rounded-md'}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -55,4 +67,4 @@ const Overview = () => {
 	);
 }
 
-export default Overview;
+export default Stat;

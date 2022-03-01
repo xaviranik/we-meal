@@ -97,13 +97,13 @@ class OrderReportController extends WP_REST_Controller {
 						],
 						'start_date' => [
 							'description'       => __( 'Start date for the report.', 'we-meal' ),
-							'required'          => true,
+							'required'          => false,
 							'type'              => 'string',
 							'sanitize_callback' => 'sanitize_text_field',
 						],
 						'end_date' => [
 							'description'       => __( 'End date for the report.', 'we-meal' ),
-							'required'          => true,
+							'required'          => false,
 							'type'              => 'string',
 							'sanitize_callback' => 'sanitize_text_field',
 						],
@@ -203,8 +203,8 @@ class OrderReportController extends WP_REST_Controller {
 
 		$this->order_report_model
 			->set_user_id( $user_id )
-			->set_start_date( $request->get_param( 'start_date' ) )
-			->set_end_date( $request->get_param( 'end_date' ) );
+			->set_start_date( $request->get_param( 'start_date' ) ?? current_datetime()->format( 'Y-m-1' ) )
+			->set_end_date( $request->get_param( 'end_date' ) ?? current_datetime()->format( 'Y-m-t' ) );
 
 		$order_stat = $this->order_report_model->get_order_stat_by_user();
 
