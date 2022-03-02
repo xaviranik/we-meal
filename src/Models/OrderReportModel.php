@@ -24,8 +24,14 @@ class OrderReportModel {
 	 */
 	protected $order_stat_model;
 
-	public function __construct( OrderStatModel $order_stat_model ) {
-		$this->order_stat_model = $order_stat_model;
+	/**
+	 * @var OrderOverviewModel
+	 */
+	protected $order_overview_model;
+
+	public function __construct( OrderStatModel $order_stat_model, OrderOverviewModel $order_overview_model ) {
+		$this->order_stat_model     = $order_stat_model;
+		$this->order_overview_model = $order_overview_model;
 	}
 
 	/**
@@ -170,7 +176,9 @@ class OrderReportModel {
 	public function get_order_overview(): array {
 		global $wpdb;
 
-		return $wpdb->get_results(
+		$overview = [];
+
+		$results = $wpdb->get_results(
 			$wpdb->prepare(
 				'SELECT
 				meal_id, COUNT(*) as order_count
@@ -183,5 +191,19 @@ class OrderReportModel {
 				meal_id;'
 			)
 		);
+
+		foreach ( $results as $result ) {
+			$this->order_overview_model
+				->set_meal_id( (int) $result->meal_id )
+				->set_order_count( (int) $result->order_count );
+
+			$overview[] = [
+				'meal_id'     => $this->order_overview_model->get_meal_id(),
+				'meal_name'   => $this->order_overview_model->get_meal_name(),
+				'order_count' => $this->order_overview_model->get_order_count(),
+			];
+		}
+
+		return $overview;
 	}
 }
