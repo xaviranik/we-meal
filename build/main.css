@@ -2463,8 +2463,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-ml-1{
   margin-left: 0.25rem;
 }
-.wm-mt-10{
-  margin-top: 2.5rem;
+.wm-inline-block{
+  display: inline-block;
 }
 .wm-flex{
   display: flex;
@@ -2496,6 +2496,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-w-7{
   width: 1.75rem;
 }
+.wm-min-w-full{
+  min-width: 100%;
+}
 .wm-cursor-pointer{
   cursor: pointer;
 }
@@ -2517,11 +2520,20 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-gap-4{
   gap: 1rem;
 }
+.wm-overflow-x-auto{
+  overflow-x: auto;
+}
+.wm-whitespace-nowrap{
+  white-space: nowrap;
+}
 .wm-rounded-md{
   border-radius: 0.375rem;
 }
 .wm-border-2{
   border-width: 2px;
+}
+.wm-border-b{
+  border-bottom-width: 1px;
 }
 .wm-border-slate-100{
   --tw-border-opacity: 1;
@@ -2542,6 +2554,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-bg-indigo-100{
   --tw-bg-opacity: 1;
   background-color: rgb(224 231 255 / var(--tw-bg-opacity));
+}
+.wm-bg-red-50{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
 }
 .wm-p-3{
   padding: 0.75rem;
@@ -2570,6 +2586,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+.wm-py-2{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.wm-text-left{
+  text-align: left;
+}
 .wm-text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -2590,6 +2613,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
+.wm-text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
 .wm-font-semibold{
   font-weight: 600;
 }
@@ -2598,6 +2625,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-font-thin{
   font-weight: 100;
+}
+.wm-uppercase{
+  text-transform: uppercase;
+}
+.wm-tracking-wider{
+  letter-spacing: 0.05em;
 }
 .wm-text-gray-600{
   --tw-text-opacity: 1;
@@ -2611,9 +2644,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(129 140 248 / var(--tw-text-opacity));
 }
+.wm-text-gray-700{
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+.wm-text-gray-900{
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
 .wm-shadow-sm{
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.wm-shadow-md{
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .wm-drop-shadow-sm{
@@ -2733,6 +2779,12 @@ input[type=text]:focus {
   border-color: rgb(71 85 105 / var(--tw-border-opacity));
 }
 
+@media (min-width: 640px){
+  .sm\:wm-rounded-lg{
+    border-radius: 0.5rem;
+  }
+}
+
 @media (min-width: 768px){
   .md\:wm-mx-8{
     margin-left: 2rem;
@@ -2743,9 +2795,6 @@ input[type=text]:focus {
   }
   .md\:wm-grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .md\:wm-grid-cols-3{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
