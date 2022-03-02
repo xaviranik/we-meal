@@ -176,12 +176,13 @@ class OrderReportModel {
 	public function get_order_overview(): array {
 		global $wpdb;
 
-		$overview = [];
+		$overview          = [];
+		$total_order_count = 0;
 
 		$results = $wpdb->get_results(
 			$wpdb->prepare(
 				'SELECT
-				meal_id, COUNT(*) as order_count
+				meal_id, price, COUNT(*) as order_count
 			FROM
 				wp_we_meal_orders
 			WHERE
@@ -197,12 +198,16 @@ class OrderReportModel {
 				->set_meal_id( (int) $result->meal_id )
 				->set_order_count( (int) $result->order_count );
 
-			$overview[] = [
+			$overview['details'][] = [
 				'meal_id'     => $this->order_overview_model->get_meal_id(),
 				'meal_name'   => $this->order_overview_model->get_meal_name(),
 				'order_count' => $this->order_overview_model->get_order_count(),
 			];
+
+			$total_order_count += (int) $result->order_count;
 		}
+
+		$overview['total_order_count'] = $total_order_count;
 
 		return $overview;
 	}

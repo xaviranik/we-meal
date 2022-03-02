@@ -2463,8 +2463,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-ml-1{
   margin-left: 0.25rem;
 }
-.wm-ml-2{
-  margin-left: 0.5rem;
+.wm-mt-10{
+  margin-top: 2.5rem;
 }
 .wm-flex{
   display: flex;
@@ -2481,12 +2481,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-h-5{
   height: 1.25rem;
 }
-.wm-h-8{
-  height: 2rem;
-}
-.wm-h-10{
-  height: 2.5rem;
-}
 .wm-h-7{
   height: 1.75rem;
 }
@@ -2498,12 +2492,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-w-5{
   width: 1.25rem;
-}
-.wm-w-8{
-  width: 2rem;
-}
-.wm-w-10{
-  width: 2.5rem;
 }
 .wm-w-7{
   width: 1.75rem;
@@ -2539,17 +2527,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-border-opacity: 1;
   border-color: rgb(241 245 249 / var(--tw-border-opacity));
 }
-.wm-border-slate-600{
-  --tw-border-opacity: 1;
-  border-color: rgb(71 85 105 / var(--tw-border-opacity));
-}
-.wm-border-indigo-600{
-  --tw-border-opacity: 1;
-  border-color: rgb(79 70 229 / var(--tw-border-opacity));
-}
 .wm-bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.wm-bg-indigo-50{
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 242 255 / var(--tw-bg-opacity));
 }
 .wm-bg-gray-100{
   --tw-bg-opacity: 1;
@@ -2559,23 +2543,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(224 231 255 / var(--tw-bg-opacity));
 }
-.wm-bg-red-100{
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
-}
-.wm-bg-indigo-600{
-  --tw-bg-opacity: 1;
-  background-color: rgb(79 70 229 / var(--tw-bg-opacity));
-}
-.wm-bg-indigo-50{
-  --tw-bg-opacity: 1;
-  background-color: rgb(238 242 255 / var(--tw-bg-opacity));
-}
 .wm-p-3{
   padding: 0.75rem;
 }
-.wm-p-6{
-  padding: 1.5rem;
+.wm-px-5{
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.wm-py-5{
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 .wm-px-6{
   padding-left: 1.5rem;
@@ -2593,61 +2570,25 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.wm-px-2{
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-.wm-py-1{
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-.wm-px-4{
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-.wm-py-6{
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-.wm-px-5{
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-.wm-py-5{
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-.wm-text-base{
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
 .wm-text-xl{
   font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.wm-text-lg{
+  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 .wm-text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
-.wm-text-xs{
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-.wm-text-6xl{
-  font-size: 3.75rem;
-  line-height: 1;
-}
-.wm-text-5xl{
-  font-size: 3rem;
-  line-height: 1;
+.wm-text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 .wm-text-4xl{
   font-size: 2.25rem;
   line-height: 2.5rem;
-}
-.wm-text-lg{
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 .wm-font-semibold{
   font-weight: 600;
@@ -2666,25 +2607,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
-.wm-text-indigo-700{
-  --tw-text-opacity: 1;
-  color: rgb(67 56 202 / var(--tw-text-opacity));
-}
-.wm-text-indigo-500{
-  --tw-text-opacity: 1;
-  color: rgb(99 102 241 / var(--tw-text-opacity));
-}
-.wm-text-red-500{
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
-}
 .wm-text-indigo-400{
   --tw-text-opacity: 1;
   color: rgb(129 140 248 / var(--tw-text-opacity));
-}
-.wm-text-white{
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .wm-shadow-sm{
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -2818,6 +2743,9 @@ input[type=text]:focus {
   }
   .md\:wm-grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .md\:wm-grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

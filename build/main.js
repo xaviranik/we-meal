@@ -13691,10 +13691,18 @@ __webpack_require__.r(__webpack_exports__);
 
 const Reports = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-px-8 wm-py-4'
+    className: 'wm-container wm-mx-auto wm-px-6 wm-py-3'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'wm-grid wm-grid-cols-1 md:wm-grid-cols-2 wm-gap-4'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'wm-card'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'wm-flex-col wm-items-center wm-justify-center'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
-    className: 'wm-text-xl'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Reports', 'we-meal'))));
+    className: 'wm-text-xl wm-font-semibold'
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Daily Overview', 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: 'wm-text-lg wm-mt-10'
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total Orders: '), "10"))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Reports);
