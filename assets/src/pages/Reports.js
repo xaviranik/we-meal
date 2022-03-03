@@ -85,8 +85,8 @@ const Reports = () => {
 							<div className={'wm-mt-4'}>
 
 								<div className="wm-flex wm-flex-col">
-									<div className="wm-overflow-x-auto">
-										<div className="wm-py-2 min-w-full">
+									<div className="wm-overflow-x-auto -wm-mx-4">
+										<div className="min-w-full">
 											<div className="overflow-hidden sm:wm-rounded-lg">
 												<table className="wm-w-full">
 													<thead className="wm-bg-indigo-50 wm-rounded-md">
@@ -95,7 +95,7 @@ const Reports = () => {
 															{__('Meal', 'we-meal')}
 														</th>
 														<th scope="col" className="wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900">
-															Count
+															{__('Count', 'we-meal')}
 														</th>
 													</tr>
 													</thead>
