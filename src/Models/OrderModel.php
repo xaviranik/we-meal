@@ -203,7 +203,7 @@ class OrderModel {
 
 		$results = $wpdb->get_results(
 			"SELECT *
-			FROM {$wpdb->prefix}we_meal_orders"
+			FROM {$wpdb->prefix}we_meal_orders ORDER BY created_at DESC"
         );
 
 		foreach ( $results as $result ) {
@@ -227,8 +227,8 @@ class OrderModel {
 				'price'           => $this->get_price(),
 				'formatted_price' => $this->get_formatted_price(),
 				'status'          => $this->get_status(),
-				'created_at'      => $this->get_created_at(),
-				'updated_at'      => $this->get_updated_at(),
+				'created_at'      => current_datetime()->modify( $this->get_created_at() )->format( 'd-m-Y' ),
+				'updated_at'      => $this->get_updated_at() ?? current_datetime()->modify( $this->get_updated_at() )->format( 'd-m-Y' ),
 			];
 		}
 

@@ -13659,10 +13659,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../api */ "./assets/src/api/index.js");
+
+
 
 
 
 const Orders = () => {
+  const [orders, setOrders] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    _api__WEBPACK_IMPORTED_MODULE_2__["default"].get('orders').then(response => {
+      setOrders(response);
+    });
+  }, []);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-container wm-mx-auto wm-px-6 wm-py-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -13675,7 +13684,7 @@ const Orders = () => {
     className: 'wm-text-xl wm-font-semibold'
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Orders", 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-mt-3'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, orders && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wm-overflow-x-auto -wm-mx-4"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wm-py-2 min-w-full"
@@ -13702,20 +13711,22 @@ const Orders = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Price', 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
     scope: "col",
     className: "wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'we-meal')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
-    key: "1",
-    className: "wm-bg-white wm-border-b"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "wm-py-4 wm-px-6 wm-text-md wm-font-medium wm-text-gray-900 wm-whitespace-nowrap"
-  }, "1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
-  }, "Jon Snow"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
-  }, "Beef Rice"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
-  }, "$250"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
-  }, "24-12-2019")))))))))))));
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'we-meal')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, orders.map(order => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+      key: "1",
+      className: "wm-bg-white wm-border-b"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+      className: "wm-py-4 wm-px-6 wm-text-md wm-font-medium wm-text-gray-900 wm-whitespace-nowrap"
+    }, order.id), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+      className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
+    }, order.user_name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+      className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
+    }, order.meal_name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+      className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
+    }, order.formatted_price), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+      className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
+    }, order.created_at));
+  }))))))))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Orders);
