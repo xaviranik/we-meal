@@ -2463,8 +2463,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-ml-1{
   margin-left: 0.25rem;
 }
-.wm-inline-block{
-  display: inline-block;
+.wm-mt-10{
+  margin-top: 2.5rem;
 }
 .wm-flex{
   display: flex;
@@ -2495,9 +2495,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-w-7{
   width: 1.75rem;
-}
-.wm-min-w-full{
-  min-width: 100%;
 }
 .wm-cursor-pointer{
   cursor: pointer;
@@ -2555,10 +2552,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(224 231 255 / var(--tw-bg-opacity));
 }
-.wm-bg-red-50{
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
-}
 .wm-p-3{
   padding: 0.75rem;
 }
@@ -2613,10 +2606,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
-.wm-text-xs{
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
 .wm-font-semibold{
   font-weight: 600;
 }
@@ -2625,9 +2614,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-font-thin{
   font-weight: 100;
-}
-.wm-uppercase{
-  text-transform: uppercase;
 }
 .wm-tracking-wider{
   letter-spacing: 0.05em;
@@ -2644,10 +2630,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(129 140 248 / var(--tw-text-opacity));
 }
-.wm-text-gray-700{
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
 .wm-text-gray-900{
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -2655,11 +2637,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-shadow-sm{
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-.wm-shadow-md{
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .wm-drop-shadow-sm{
@@ -2795,6 +2772,9 @@ input[type=text]:focus {
   }
   .md\:wm-grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .md\:wm-grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

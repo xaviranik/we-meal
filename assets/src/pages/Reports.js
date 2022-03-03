@@ -25,7 +25,7 @@ const Reports = () => {
 								<span className={'wm-text-gray-600 wm-text-md wm-font-thin wm-mt-6'}>{__('current day', 'we-meals')}</span>
 
 								<div className={'wm-mt-4 wm-flex wm-items-center wm-justify-between'}>
-									<h1 className={'wm-font-semibold wm-text-4xl'}>{overview && overview.total_order_count}</h1>
+									<h1 className={'wm-font-semibold wm-text-4xl'}>{overview?.total_order_count && overview.total_order_count}</h1>
 									<div className={'wm-bg-indigo-100 wm-px-5 wm-py-5 wm-rounded-md'}>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -91,26 +91,24 @@ const Reports = () => {
 												<table className="wm-w-full">
 													<thead className="wm-bg-indigo-50 wm-rounded-md">
 													<tr>
-														<th scope="col"
-															className="wm-py-3 wm-px-6 wm-text-lg wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900">
-															Meal
+														<th scope="col" className="wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900">
+															{__('Meal', 'we-meal')}
 														</th>
-														<th scope="col"
-															className="wm-py-3 wm-px-6 wm-text-lg wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900">
+														<th scope="col" className="wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900">
 															Count
 														</th>
 													</tr>
 													</thead>
 													<tbody>
 
-													{overview.details && overview.details.forEach((meal) => {
+													{ overview?.details && overview.details.map(({meal_id, meal_name, order_count}) => {
 														return (
-															<tr className="wm-bg-white wm-border-b">
+															<tr key={meal_id} className="wm-bg-white wm-border-b">
 																<td className="wm-py-4 wm-px-6 wm-text-md wm-font-medium wm-text-gray-900 wm-whitespace-nowrap">
-																	Beef and Khichuri
+																	{meal_name}
 																</td>
 																<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
-																	10
+																	{order_count}
 																</td>
 															</tr>
 														);

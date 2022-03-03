@@ -13717,7 +13717,7 @@ const Reports = () => {
     className: 'wm-mt-4 wm-flex wm-items-center wm-justify-between'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     className: 'wm-font-semibold wm-text-4xl'
-  }, overview && overview.total_order_count), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (overview === null || overview === void 0 ? void 0 : overview.total_order_count) && overview.total_order_count), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-bg-indigo-100 wm-px-5 wm-py-5 wm-rounded-md'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
@@ -13791,18 +13791,24 @@ const Reports = () => {
     className: "wm-bg-indigo-50 wm-rounded-md"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
     scope: "col",
-    className: "wm-py-3 wm-px-6 wm-text-lg wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
-  }, "Meal"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+    className: "wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Meal', 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
     scope: "col",
-    className: "wm-py-3 wm-px-6 wm-text-lg wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
-  }, "Count"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, overview.details && overview.details.forEach(meal => {
+    className: "wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+  }, "Count"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, (overview === null || overview === void 0 ? void 0 : overview.details) && overview.details.map(_ref => {
+    let {
+      meal_id,
+      meal_name,
+      order_count
+    } = _ref;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+      key: meal_id,
       className: "wm-bg-white wm-border-b"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
       className: "wm-py-4 wm-px-6 wm-text-md wm-font-medium wm-text-gray-900 wm-whitespace-nowrap"
-    }, "Beef and Khichuri"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    }, meal_name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
       className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
-    }, "10"));
+    }, order_count));
   })))))))))))));
 };
 
