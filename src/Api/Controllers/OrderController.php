@@ -64,6 +64,35 @@ class OrderController extends WP_REST_Controller {
 			'/' . $this->rest_base,
 			[
 				[
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_items' ],
+					'permission_callback' => [ $this, 'get_items_permissions_check' ],
+					'args'                => [
+						'user' => [
+							'description'       => __( 'Unique identifier for the meal.', 'we-meal' ),
+							'type'              => 'string',
+							'required'          => false,
+							'sanitize_callback' => 'sanitize_text_field',
+							'validate_callback' => 'rest_validate_request_arg',
+						],
+						'start_date' => [
+							'description'       => __( 'Start date for the report.', 'we-meal' ),
+							'required'          => false,
+							'type'              => 'string',
+							'sanitize_callback' => 'sanitize_text_field',
+						],
+						'end_date' => [
+							'description'       => __( 'End date for the report.', 'we-meal' ),
+							'required'          => false,
+							'type'              => 'string',
+							'sanitize_callback' => 'sanitize_text_field',
+						],
+					],
+				],
+				'schema' => [ $this, 'get_items_schema' ],
+			],
+			[
+				[
 					'methods'             => WP_REST_Server::CREATABLE,
 					'callback'            => [ $this, 'create_item' ],
 					'permission_callback' => [ $this, 'create_item_permissions_check' ],
@@ -107,6 +136,17 @@ class OrderController extends WP_REST_Controller {
 	}
 
 	/**
+	 * Checks if a given request has access to get items.
+	 *
+	 * @param WP_REST_Request $request
+	 *
+	 * @return bool
+	 */
+	public function get_items_permissions_check( $request ): bool {
+		return is_user_logged_in() && current_user_can( 'manage_meal' );
+	}
+
+	/**
 	 * Checks if a given request has access to create items.
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
@@ -118,15 +158,28 @@ class OrderController extends WP_REST_Controller {
 	}
 
 	/**
+	 * Retrieves a collection of orders.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 *
+	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
+	 */
+	public function get_items( $request ) {
+		return rest_ensure_response( $this->order_model->get_orders( $request ) );
+	}
+
+	/**
 	 * Creates one item from the collection.
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
+	 *
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
 	 */
 	public function create_item( $request ) {
 		$this->order_model
 			->set_user_id( get_current_user_id() )
-			->set_meal_id( $request->get_param( 'meal_id' ) );
+			->set_meal_id( $request->get_param( 'meal_id' ) )
+			->set_created_at( current_time( 'mysql' ) );
 
 		$response = $this->order_model->save();
 

@@ -3,6 +3,7 @@
 namespace PhpKnight\WeMeal\Models;
 
 use PhpKnight\WeMeal\Admin\CPT\Meal\PriceMetaBox;
+use PhpKnight\WeMeal\Helper;
 use WP_Error;
 
 class OrderModel {
@@ -26,6 +27,11 @@ class OrderModel {
 	 * @var float
 	 */
 	protected $price;
+
+	/**
+	 * @var string
+	 */
+	protected $formatted_price;
 
 	/**
 	 * @var string
@@ -100,7 +106,7 @@ class OrderModel {
 	 * @return float
 	 */
 	public function get_price(): float {
-		$this->price = floatval( get_post_meta( $this->get_meal_id(), PriceMetaBox::$price_meta_key, true ) );
+		$this->price = $this->price ?? floatval( get_post_meta( $this->get_meal_id(), PriceMetaBox::$price_meta_key, true ) );
 		return $this->price;
 	}
 
@@ -111,6 +117,24 @@ class OrderModel {
 	 */
 	public function set_price( float $price ): OrderModel {
 		$this->price = $price;
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_formatted_price(): string {
+		return $this->formatted_price = Helper::format_price( $this->get_price() );
+	}
+
+	/**
+	 * @param string $formatted_price
+	 *
+	 * @return OrderModel
+	 */
+	public function set_formatted_price( string $formatted_price ): OrderModel {
+		$this->formatted_price = $formatted_price;
 
 		return $this;
 	}
@@ -163,10 +187,52 @@ class OrderModel {
 	 *
 	 * @return OrderModel
 	 */
-	public function set_updated_at( string $updated_at ): OrderModel {
-		$this->updated_at = $updated_at;
+	public function set_updated_at( string $updated_at  ): OrderModel {
+		$this->updated_at = $updated_at ?? '';
 
 		return $this;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function get_orders(): array {
+		global $wpdb;
+
+		$orders = [];
+
+		$results = $wpdb->get_results(
+			"SELECT *
+			FROM {$wpdb->prefix}we_meal_orders"
+        );
+
+		foreach ( $results as $result ) {
+			$this->set_id( $result->id )
+				->set_user_id( $result->user_id )
+				->set_meal_id( $result->meal_id )
+				->set_price( $result->price )
+				->set_status( $result->status )
+				->set_created_at( $result->created_at )
+				->set_updated_at( $result->updated_at ?? '' );
+
+			$meal = new MealModel();
+			$meal->set_id( $this->get_meal_id() );
+
+			$orders[] = [
+				'id'              => $this->get_id(),
+				'user_id'         => $this->get_user_id(),
+				'user_name'       => get_userdata( $this->get_user_id() )->display_name,
+				'meal_id'         => $this->get_meal_id(),
+				'meal_name'       => $meal->get_name(),
+				'price'           => $this->get_price(),
+				'formatted_price' => $this->get_formatted_price(),
+				'status'          => $this->get_status(),
+				'created_at'      => $this->get_created_at(),
+				'updated_at'      => $this->get_updated_at(),
+			];
+		}
+
+		return $orders;
 	}
 
 	/**

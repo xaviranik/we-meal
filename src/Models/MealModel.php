@@ -54,9 +54,7 @@ class MealModel {
 	 * @return int
 	 */
 	public function get_id(): int {
-		$this->id = $this->meal->ID;
-
-		return $this->id;
+		return $this->id ?? $this->meal->ID;
 	}
 
 	/**
@@ -74,7 +72,7 @@ class MealModel {
 	 * @return string
 	 */
 	public function get_name(): string {
-		$this->name = $this->meal->post_title;
+		$this->name = $this->meal->post_title ?? get_the_title( $this->get_id() );
 
 		return $this->name;
 	}
