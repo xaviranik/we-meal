@@ -13631,7 +13631,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const Dashboard = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-container wm-mx-auto wm-px-6 wm-py-3'
+    className: 'wm-container wm-mx-auto wm-px-6 wm-py-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-grid wm-grid-cols-1 md:wm-grid-cols-2 wm-gap-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -13664,7 +13664,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const Orders = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-container wm-mx-auto wm-px-6 wm-py-3'
+    className: 'wm-container wm-mx-auto wm-px-6 wm-py-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-grid wm-grid-cols-1'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -13748,7 +13748,7 @@ const Reports = () => {
     });
   }, []);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-container wm-mx-auto wm-px-6 wm-py-3'
+    className: 'wm-container wm-mx-auto wm-px-6 wm-py-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-grid wm-grid-cols-1 md:wm-grid-cols-2 wm-gap-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -13793,13 +13793,13 @@ const Reports = () => {
     className: 'wm-flex-col wm-items-center wm-justify-center'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     className: 'wm-text-xl wm-font-semibold'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total Orders Today', 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Most Ordered Today', 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: 'wm-text-gray-600 wm-text-md wm-font-thin wm-mt-6'
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('current day', 'we-meals')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-mt-4 wm-flex wm-items-center wm-justify-between'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
-    className: 'wm-font-semibold wm-text-4xl'
-  }, "12"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'wm-font-semibold wm-text-xl'
+  }, "Beef Khichuri"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-bg-indigo-100 wm-px-5 wm-py-5 wm-rounded-md'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     xmlns: "http://www.w3.org/2000/svg",

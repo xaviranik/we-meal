@@ -14,7 +14,7 @@ const Reports = () => {
 
 	return (
 		<>
-			<div className={'wm-container wm-mx-auto wm-px-6 wm-py-3'}>
+			<div className={'wm-container wm-mx-auto wm-px-6 wm-py-4'}>
 				<div className={'wm-grid wm-grid-cols-1 md:wm-grid-cols-2 wm-gap-4'}>
 
 					<div className={'wm-grid wm-grid-cols-1 md:wm-grid-cols-2 wm-gap-4'}>
@@ -48,12 +48,12 @@ const Reports = () => {
 
 						<div className={'wm-card'}>
 							<div className={'wm-flex-col wm-items-center wm-justify-center'}>
-								<h1 className={'wm-text-xl wm-font-semibold'}>{__('Total Orders Today', 'we-meal')}</h1>
+								<h1 className={'wm-text-xl wm-font-semibold'}>{__('Most Ordered Today', 'we-meal')}</h1>
 
 								<span className={'wm-text-gray-600 wm-text-md wm-font-thin wm-mt-6'}>{__('current day', 'we-meals')}</span>
 
 								<div className={'wm-mt-4 wm-flex wm-items-center wm-justify-between'}>
-									<h1 className={'wm-font-semibold wm-text-4xl'}>12</h1>
+									<h1 className={'wm-font-semibold wm-text-xl'}>Beef Khichuri</h1>
 									<div className={'wm-bg-indigo-100 wm-px-5 wm-py-5 wm-rounded-md'}>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
