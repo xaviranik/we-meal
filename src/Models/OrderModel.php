@@ -211,7 +211,7 @@ class OrderModel {
 				->set_user_id( $result->user_id )
 				->set_meal_id( $result->meal_id )
 				->set_price( $result->price )
-				->set_status( $result->status )
+				->set_status( $result->status ?? '' )
 				->set_created_at( $result->created_at )
 				->set_updated_at( $result->updated_at ?? '' );
 

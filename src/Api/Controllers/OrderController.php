@@ -89,9 +89,6 @@ class OrderController extends WP_REST_Controller {
 						],
 					],
 				],
-				'schema' => [ $this, 'get_items_schema' ],
-			],
-			[
 				[
 					'methods'             => WP_REST_Server::CREATABLE,
 					'callback'            => [ $this, 'create_item' ],
@@ -106,8 +103,8 @@ class OrderController extends WP_REST_Controller {
 						],
 					],
 				],
-				'schema' => [ $this, 'get_item_schema' ],
-			]
+				'schema' => [ $this, 'get_items_schema' ],
+			],
 		);
 
 		register_rest_route(

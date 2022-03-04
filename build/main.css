@@ -2451,14 +2451,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: -1rem;
   margin-right: -1rem;
 }
-.-wm-my-3{
-  margin-top: -0.75rem;
-  margin-bottom: -0.75rem;
-}
-.-wm-mx-3{
-  margin-left: -0.75rem;
-  margin-right: -0.75rem;
-}
 .wm-mt-4{
   margin-top: 1rem;
 }
@@ -2471,8 +2463,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-ml-1{
   margin-left: 0.25rem;
 }
-.-wm-ml-2{
-  margin-left: -0.5rem;
+.wm-mt-10{
+  margin-top: 2.5rem;
 }
 .wm-mt-3{
   margin-top: 0.75rem;
@@ -2563,10 +2555,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(224 231 255 / var(--tw-bg-opacity));
 }
-.wm-bg-gray-50{
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
 .wm-p-3{
   padding: 0.75rem;
 }
@@ -2586,13 +2574,17 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
-.wm-py-2{
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+.wm-px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 .wm-py-4{
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.wm-py-2{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .wm-text-left{
   text-align: left;
@@ -2786,6 +2778,9 @@ input[type=text]:focus {
   }
   .md\:wm-grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .md\:wm-grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
