@@ -18,7 +18,17 @@ const Orders = () => {
 				<div className={'wm-grid wm-grid-cols-1'}>
 					<div className={'wm-card'}>
 						<div className={'wm-flex-col wm-items-center wm-justify-center'}>
-							<h1 className={'wm-text-xl wm-font-semibold'}>{__("Orders", 'we-meal')}</h1>
+							<div className={'wm-flex wm-items-center wm-justify-between'}>
+								<h1 className={'wm-text-xl wm-font-semibold'}>{__("Orders", 'we-meal')}</h1>
+								<div className={'wm-flex wm-items-center wm-justify-between'}>
+									<input type="text" className={'wm-input'} placeholder={__('Search user', 'we-meal')}/>
+									<button className={'wm-button-primary wm-flex wm-items-center wm-justify-center'}>
+										<svg className={'wm-w-4 wm-h-4'} fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+											<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+										</svg>
+									</button>
+								</div>
+							</div>
 
 							<div className={'wm-mt-3'}>
 								{orders &&

@@ -47,6 +47,10 @@
 	.fc-event-title-container {
 		@apply wm-bg-indigo-50 wm-text-indigo-700 wm-border-indigo-700 wm-font-medium;
 	}
+
+	.wm-input {
+		@apply wm-border-2 wm-border-gray-100 wm-px-4 wm-py-1 wm-outline-none wm-rounded-md focus:wm-border-gray-700 focus:wm-ring-0 focus:wm-bg-gray-50 wm-transition wm-delay-100 wm-ease-in-out;
+	}
 }
 
 #wpcontent {
