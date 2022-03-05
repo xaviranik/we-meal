@@ -188,10 +188,7 @@ class Menu implements HookableInterface {
 	 * @return void
 	 */
 	public function cleanup_admin_notices(): void {
-		global $pagenow;
-
-		// @codingStandardsIgnoreLine
-		if ( 'admin.php' === $pagenow && 'we-meal#/dashboard' === $_GET['page'] ) {
+		if ( 'toplevel_page_we-meal' === get_current_screen()->id ) {
 			remove_all_actions( 'admin_notices' );
 		}
 	}

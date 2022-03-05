@@ -2466,12 +2466,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-mt-3{
   margin-top: 0.75rem;
 }
-.wm-ml-2{
-  margin-left: 0.5rem;
-}
-.wm-ml-4{
-  margin-left: 1rem;
-}
 .wm-flex{
   display: flex;
 }
@@ -2490,9 +2484,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-h-7{
   height: 1.75rem;
 }
-.wm-h-6{
-  height: 1.5rem;
-}
 .wm-w-full{
   width: 100%;
 }
@@ -2504,9 +2495,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-w-7{
   width: 1.75rem;
-}
-.wm-w-6{
-  width: 1.5rem;
 }
 .wm-cursor-pointer{
   cursor: pointer;
@@ -2538,10 +2526,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-rounded-md{
   border-radius: 0.375rem;
 }
-.wm-rounded-l-none{
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-}
 .wm-border-2{
   border-width: 2px;
 }
@@ -2551,10 +2535,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-border-slate-100{
   --tw-border-opacity: 1;
   border-color: rgb(241 245 249 / var(--tw-border-opacity));
-}
-.wm-border-indigo-600{
-  --tw-border-opacity: 1;
-  border-color: rgb(79 70 229 / var(--tw-border-opacity));
 }
 .wm-bg-white{
   --tw-bg-opacity: 1;
@@ -2574,9 +2554,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-p-3{
   padding: 0.75rem;
-}
-.wm-p-2{
-  padding: 0.5rem;
 }
 .wm-px-5{
   padding-left: 1.25rem;
@@ -2601,18 +2578,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-py-3{
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-}
-.wm-py-1{
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-.wm-px-1{
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-.wm-px-2{
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
 }
 .wm-text-left{
   text-align: left;
@@ -2667,10 +2632,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-text-gray-900{
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-.wm-text-indigo-600{
-  --tw-text-opacity: 1;
-  color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 .wm-shadow-sm{
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -2774,35 +2735,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 500;
   --tw-text-opacity: 1;
   color: rgb(67 56 202 / var(--tw-text-opacity));
-}
-#we-meal-app .wm-input, .react-responsive-modal-root .wm-input{
-  border-radius: 0.375rem;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-width: 2px;
-  --tw-border-opacity: 1;
-  border-color: rgb(243 244 246 / var(--tw-border-opacity));
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
-  transition-duration: 150ms;
-  transition-delay: 100ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-#we-meal-app .wm-input:focus, .react-responsive-modal-root .wm-input:focus{
-  --tw-border-opacity: 1;
-  border-color: rgb(55 65 81 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
 #wpcontent {
