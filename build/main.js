@@ -13684,27 +13684,9 @@ const Orders = () => {
     className: 'wm-flex wm-items-center wm-justify-between'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     className: 'wm-text-xl wm-font-semibold'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Orders", 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-flex wm-items-center wm-justify-between'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    className: 'wm-input',
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search user', 'we-meal')
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: 'wm-button-primary wm-flex wm-items-center wm-justify-center'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    className: 'wm-w-4 wm-h-4',
-    fill: "none",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: "2",
-    viewBox: "0 0 24 24",
-    stroke: "currentColor"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Today's Orders", 'we-meal'))), orders && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-mt-3'
-  }, orders && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wm-overflow-x-auto -wm-mx-4"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wm-py-2 min-w-full"

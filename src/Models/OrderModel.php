@@ -203,7 +203,10 @@ class OrderModel {
 
 		$results = $wpdb->get_results(
 			"SELECT *
-			FROM {$wpdb->prefix}we_meal_orders ORDER BY created_at DESC"
+			FROM {$wpdb->prefix}we_meal_orders
+			WHERE created_at >= CURDATE()
+			AND created_at < CURDATE() + INTERVAL 1 DAY
+			ORDER BY created_at DESC"
         );
 
 		foreach ( $results as $result ) {
