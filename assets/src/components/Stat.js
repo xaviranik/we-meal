@@ -51,13 +51,13 @@ const Stat = () => {
 			<StatCard
 				title={__('Total Meal Order', 'we-meal')}
 				subtitle={__('this month', 'we-meal')}
-				value={stat && stat.total_orders}
+				value={stat && stat?.total_orders}
 				icon={totalMealIcon}
 			/>
 			<StatCard
 				title={__('Total Due', 'we-meal')}
 				subtitle={__('this month', 'we-meal')}
-				value={stat && stat.total_price}
+				value={stat && stat?.total_price}
 				icon={totalDueIcon}
 			/>
 		</div>

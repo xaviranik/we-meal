@@ -2451,17 +2451,27 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: -1rem;
   margin-right: -1rem;
 }
-.wm-mt-2{
-  margin-top: 0.5rem;
+.wm-mx-4{
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .wm-mt-4{
   margin-top: 1rem;
+}
+.wm-mt-2{
+  margin-top: 0.5rem;
 }
 .wm-mt-6{
   margin-top: 1.5rem;
 }
 .wm-ml-1{
   margin-left: 0.25rem;
+}
+.wm-mt-16{
+  margin-top: 4rem;
+}
+.wm-mt-8{
+  margin-top: 2rem;
 }
 .wm-mt-3{
   margin-top: 0.75rem;
@@ -2474,6 +2484,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-h-5{
   height: 1.25rem;
+}
+.wm-h-8{
+  height: 2rem;
 }
 .wm-h-2{
   height: 0.5rem;
@@ -2490,11 +2503,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-h-10{
   height: 2.5rem;
 }
-.wm-h-8{
-  height: 2rem;
-}
 .wm-w-32{
   width: 8rem;
+}
+.wm-w-24{
+  width: 6rem;
 }
 .wm-w-full{
   width: 100%;
@@ -2510,9 +2523,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-w-16{
   width: 4rem;
-}
-.wm-w-24{
-  width: 6rem;
 }
 @-webkit-keyframes wm-pulse{
   50%{
@@ -2591,11 +2601,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(224 231 255 / var(--tw-bg-opacity));
 }
+.wm-p-4{
+  padding: 1rem;
+}
 .wm-p-3{
   padding: 0.75rem;
 }
-.wm-p-4{
-  padding: 1rem;
+.wm-p-8{
+  padding: 2rem;
 }
 .wm-px-5{
   padding-left: 1.25rem;
@@ -2624,6 +2637,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-text-left{
   text-align: left;
 }
+.wm-text-center{
+  text-align: center;
+}
 .wm-text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -2643,6 +2659,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-text-4xl{
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+.wm-text-6xl{
+  font-size: 3.75rem;
+  line-height: 1;
 }
 .wm-font-semibold{
   font-weight: 600;
@@ -2670,6 +2690,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-text-indigo-400{
   --tw-text-opacity: 1;
   color: rgb(129 140 248 / var(--tw-text-opacity));
+}
+.wm-text-indigo-600{
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 .wm-text-gray-900{
   --tw-text-opacity: 1;

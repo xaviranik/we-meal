@@ -55,7 +55,7 @@ const Orders = () => {
 													<tbody>
 													{orders.map(order => {
 														return (
-															<tr key="1" className="wm-bg-white wm-border-b">
+															<tr key={order.id} className="wm-bg-white wm-border-b">
 																<td className="wm-py-4 wm-px-6 wm-text-md wm-font-medium wm-text-gray-900 wm-whitespace-nowrap">
 																	{order.id}
 																</td>

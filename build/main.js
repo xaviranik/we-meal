@@ -13056,15 +13056,22 @@ function flushToDom() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/Dashboard */ "./assets/src/pages/Dashboard.js");
 /* harmony import */ var _pages_Reports__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Reports */ "./assets/src/pages/Reports.js");
 /* harmony import */ var _pages_Orders__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Orders */ "./assets/src/pages/Orders.js");
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Header */ "./assets/src/components/Header.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
-/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
-/* harmony import */ var _style_main_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./style/main.scss */ "./assets/src/style/main.scss");
+/* harmony import */ var _auth_PrivateRoute__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth/PrivateRoute */ "./assets/src/auth/PrivateRoute.js");
+/* harmony import */ var _pages_NotFound404__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/NotFound404 */ "./assets/src/pages/NotFound404.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
+/* harmony import */ var _style_main_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./style/main.scss */ "./assets/src/style/main.scss");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./api */ "./assets/src/api/index.js");
+
+
+
+
 
 
 
@@ -13076,7 +13083,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WeMeal = () => {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.HashRouter, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_toastify__WEBPACK_IMPORTED_MODULE_5__.ToastContainer, {
+  const [isMealManager, setIsMealManager] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    _api__WEBPACK_IMPORTED_MODULE_10__["default"].get('capability').then(response => {
+      setIsMealManager(response.can_manage_meal);
+    });
+  }, []);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.HashRouter, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_toastify__WEBPACK_IMPORTED_MODULE_7__.ToastContainer, {
     position: "bottom-right",
     autoClose: 4000,
     hideProgressBar: false,
@@ -13086,15 +13099,22 @@ const WeMeal = () => {
     pauseOnFocusLoss: true,
     draggable: true,
     pauseOnHover: true
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "/dashboard",
     element: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pages_Dashboard__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "/reports",
-    element: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pages_Reports__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+    element: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_auth_PrivateRoute__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      auth: isMealManager
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pages_Reports__WEBPACK_IMPORTED_MODULE_2__["default"], null))
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "/orders",
-    element: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pages_Orders__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+    element: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_auth_PrivateRoute__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      auth: isMealManager
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pages_Orders__WEBPACK_IMPORTED_MODULE_3__["default"], null))
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+    path: "/404",
+    element: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pages_NotFound404__WEBPACK_IMPORTED_MODULE_6__["default"], null)
   }))));
 };
 
@@ -13145,6 +13165,34 @@ const Api = {
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (Api);
+
+/***/ }),
+
+/***/ "./assets/src/auth/PrivateRoute.js":
+/*!*****************************************!*\
+  !*** ./assets/src/auth/PrivateRoute.js ***!
+  \*****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+
+
+
+const PrivateRoute = _ref => {
+  let {
+    children,
+    auth
+  } = _ref;
+  return auth ? children : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Navigate, {
+    to: "/404"
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PrivateRoute);
 
 /***/ }),
 
@@ -13607,12 +13655,12 @@ const Stat = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StatCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total Meal Order', 'we-meal'),
     subtitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('this month', 'we-meal'),
-    value: stat && stat.total_orders,
+    value: stat && (stat === null || stat === void 0 ? void 0 : stat.total_orders),
     icon: totalMealIcon
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StatCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total Due', 'we-meal'),
     subtitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('this month', 'we-meal'),
-    value: stat && stat.total_price,
+    value: stat && (stat === null || stat === void 0 ? void 0 : stat.total_price),
     icon: totalDueIcon
   }));
 };
@@ -13724,6 +13772,39 @@ const Dashboard = () => {
 
 /***/ }),
 
+/***/ "./assets/src/pages/NotFound404.js":
+/*!*****************************************!*\
+  !*** ./assets/src/pages/NotFound404.js ***!
+  \*****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const NotFound404 = () => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'wm-flex wm-items-center wm-justify-center wm-mx-4'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'wm-card wm-mt-16 wm-flex-col wm-items-center wm-justify-center wm-text-center wm-p-8'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
+    className: 'wm-text-6xl'
+  }, "4", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: 'wm-text-indigo-600'
+  }, "0"), "4"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: 'wm-text-xl wm-mt-8 wm-text-gray-600'
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('The page you are looking for does not exists!', 'we-meal'))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NotFound404);
+
+/***/ }),
+
 /***/ "./assets/src/pages/Orders.js":
 /*!************************************!*\
   !*** ./assets/src/pages/Orders.js ***!
@@ -13792,7 +13873,7 @@ const Orders = () => {
     className: "wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'we-meal')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, orders.map(order => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
-      key: "1",
+      key: order.id,
       className: "wm-bg-white wm-border-b"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
       className: "wm-py-4 wm-px-6 wm-text-md wm-font-medium wm-text-gray-900 wm-whitespace-nowrap"
@@ -13825,6 +13906,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../api */ "./assets/src/api/index.js");
+/* harmony import */ var _components_StatCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/StatCard */ "./assets/src/components/StatCard.js");
+
 
 
 
@@ -13837,71 +13920,62 @@ const Reports = () => {
       setOverview(response);
     });
   }, []);
+
+  const totalOrderIcon = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "wm-h-7 wm-w-7 wm-text-indigo-400",
+      "data-name": "Layer 1",
+      viewBox: "0 0 24 24",
+      stroke: "currentColor",
+      fill: "currentColor",
+      strokeWidth: "1"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
+      cx: "7",
+      cy: "22",
+      r: "2"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
+      cx: "17",
+      cy: "22",
+      r: "2"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+      d: "M23.685 1.336a1 1 0 00-1.414 0L17.112 6.5l-1.551-1.619a1 1 0 00-1.442 1.386l1.614 1.679a1.872 1.872 0 001.345.6h.033a1.873 1.873 0 001.335-.553l5.239-5.243a1 1 0 000-1.414z"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+      d: "M21.9 9.016a1 1 0 00-1.162.807l-.128.709A3 3 0 0117.657 13H5.418l-.94-8H11a1 1 0 000-2H4.242L4.2 2.648A3 3 0 001.222 0H1a1 1 0 000 2h.222a1 1 0 01.993.883l1.376 11.7A5 5 0 008.557 19H19a1 1 0 000-2H8.557a3 3 0 01-2.829-2h11.929a5 5 0 004.921-4.113l.128-.71a1 1 0 00-.806-1.161z"
+    }));
+  };
+
+  const mealOrderedTodayIcon = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "wm-h-7 wm-w-7 wm-text-indigo-400",
+      "data-name": "Layer 1",
+      viewBox: "0 0 24 24",
+      stroke: "currentColor",
+      fill: "currentColor",
+      strokeWidth: "1"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+      d: "M1.333 7.238C.484 5.522-1.2 1.269 1.2.15a1.949 1.949 0 012.129.423l4.96 5.3A1 1 0 116.887 7.3L2 2.08c.119 3.777 2.343 6.6 4.841 9.439a1 1 0 01-1.39 1.446 24.522 24.522 0 01-4.118-5.727zM18.005 16.2a1.259 1.259 0 00-1.09-.4 8.055 8.055 0 01-3.458-.29.985.985 0 00-.981.254c-1.494 2.256 3.274 2.113 4.312 2.08l5.483 5.839a1 1 0 001.458-1.371zM15 14a4.99 4.99 0 003.536-1.462l5.171-5.172a1 1 0 10-1.414-1.416l-5.171 5.172a3 3 0 01-3.406.576l6.991-6.991a1 1 0 10-1.414-1.414L12.3 10.284a3 3 0 01.576-3.406l5.174-5.171A1 1 0 0016.636.293l-5.172 5.171a5.01 5.01 0 00-.635 6.293L.293 22.293a1 1 0 001.414 1.414l10.536-10.536A5 5 0 0015 14z"
+    }));
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-container wm-mx-auto wm-px-6 wm-py-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-grid wm-grid-cols-1 md:wm-grid-cols-2 wm-gap-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-grid wm-grid-cols-1 md:wm-grid-cols-2 wm-gap-4'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-card'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-flex-col wm-items-center wm-justify-center'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
-    className: 'wm-text-xl wm-font-semibold'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Total Orders Today", 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: 'wm-text-gray-600 wm-text-md wm-font-thin wm-mt-6'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('current day', 'we-meals')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-mt-4 wm-flex wm-items-center wm-justify-between'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
-    className: 'wm-font-semibold wm-text-4xl'
-  }, (overview === null || overview === void 0 ? void 0 : overview.total_order_count) && overview.total_order_count), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-bg-indigo-100 wm-px-5 wm-py-5 wm-rounded-md'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    className: "wm-h-7 wm-w-7 wm-text-indigo-400",
-    "data-name": "Layer 1",
-    viewBox: "0 0 24 24",
-    stroke: "currentColor",
-    fill: "currentColor",
-    strokeWidth: "1"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
-    cx: "7",
-    cy: "22",
-    r: "2"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
-    cx: "17",
-    cy: "22",
-    r: "2"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M23.685 1.336a1 1 0 00-1.414 0L17.112 6.5l-1.551-1.619a1 1 0 00-1.442 1.386l1.614 1.679a1.872 1.872 0 001.345.6h.033a1.873 1.873 0 001.335-.553l5.239-5.243a1 1 0 000-1.414z"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M21.9 9.016a1 1 0 00-1.162.807l-.128.709A3 3 0 0117.657 13H5.418l-.94-8H11a1 1 0 000-2H4.242L4.2 2.648A3 3 0 001.222 0H1a1 1 0 000 2h.222a1 1 0 01.993.883l1.376 11.7A5 5 0 008.557 19H19a1 1 0 000-2H8.557a3 3 0 01-2.829-2h11.929a5 5 0 004.921-4.113l.128-.71a1 1 0 00-.806-1.161z"
-  })))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-card'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-flex-col wm-items-center wm-justify-center'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
-    className: 'wm-text-xl wm-font-semibold'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Most Ordered Today', 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: 'wm-text-gray-600 wm-text-md wm-font-thin wm-mt-6'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('current day', 'we-meals')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-mt-4 wm-flex wm-items-center wm-justify-between'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
-    className: 'wm-font-semibold wm-text-xl'
-  }, "Beef Khichuri"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'wm-bg-indigo-100 wm-px-5 wm-py-5 wm-rounded-md'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    className: "wm-h-7 wm-w-7 wm-text-indigo-400",
-    "data-name": "Layer 1",
-    viewBox: "0 0 24 24",
-    stroke: "currentColor",
-    fill: "currentColor",
-    strokeWidth: "1"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M1.333 7.238C.484 5.522-1.2 1.269 1.2.15a1.949 1.949 0 012.129.423l4.96 5.3A1 1 0 116.887 7.3L2 2.08c.119 3.777 2.343 6.6 4.841 9.439a1 1 0 01-1.39 1.446 24.522 24.522 0 01-4.118-5.727zM18.005 16.2a1.259 1.259 0 00-1.09-.4 8.055 8.055 0 01-3.458-.29.985.985 0 00-.981.254c-1.494 2.256 3.274 2.113 4.312 2.08l5.483 5.839a1 1 0 001.458-1.371zM15 14a4.99 4.99 0 003.536-1.462l5.171-5.172a1 1 0 10-1.414-1.416l-5.171 5.172a3 3 0 01-3.406.576l6.991-6.991a1 1 0 10-1.414-1.414L12.3 10.284a3 3 0 01.576-3.406l5.174-5.171A1 1 0 0016.636.293l-5.172 5.171a5.01 5.01 0 00-.635 6.293L.293 22.293a1 1 0 001.414 1.414l10.536-10.536A5 5 0 0015 14z"
-  }))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_StatCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Total Orders Today", 'we-meal'),
+    subtitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('current day', 'we-meals'),
+    value: (overview === null || overview === void 0 ? void 0 : overview.total_order_count) && overview.total_order_count,
+    icon: totalOrderIcon
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_StatCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Most Ordered Today', 'we-meal'),
+    subtitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('current day', 'we-meals'),
+    value: '1',
+    icon: mealOrderedTodayIcon
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-card'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     className: 'wm-text-xl wm-font-semibold'

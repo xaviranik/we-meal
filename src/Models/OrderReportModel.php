@@ -158,13 +158,13 @@ class OrderReportModel {
 		);
 
 		$this->order_stat_model->set_user_id( $this->get_user_id() )
-		    ->set_total_price( $result->total_price )
+		    ->set_total_price( $result->total_price ?? 0 )
 		    ->set_total_orders( $result->total_orders );
 
 		return [
 			'user_id'      => $this->order_stat_model->get_user_id(),
 			'total_price'  => $this->order_stat_model->get_total_price(),
-			'total_orders' => $this->order_stat_model->get_total_orders(),
+			'total_orders' => (string) $this->order_stat_model->get_total_orders(),
 		];
 	}
 

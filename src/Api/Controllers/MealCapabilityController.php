@@ -34,7 +34,7 @@ class MealCapabilityController extends WP_REST_Controller {
 				[
 					'methods'             => WP_REST_Server::READABLE,
 					'callback'            => [ $this, 'get_current_item' ],
-					'permission_callback' => [ $this, 'get_item_permissions_check' ],
+					'permission_callback' => [ $this, 'get_current_item_permissions_check' ],
 					'args'                => [],
 				],
 				'schema' => [ $this, 'get_item_schema' ],
@@ -62,6 +62,17 @@ class MealCapabilityController extends WP_REST_Controller {
 				'schema' => [ $this, 'get_item_schema' ],
 			]
 		);
+	}
+
+	/**
+	 * Checks if a given request has access to get current item.
+	 *
+	 * @param WP_REST_Request $request
+	 *
+	 * @return bool
+	 */
+	public function get_current_item_permissions_check( $request ): bool {
+		return is_user_logged_in() && current_user_can( 'read' );
 	}
 
 	/**
@@ -118,7 +129,6 @@ class MealCapabilityController extends WP_REST_Controller {
 
 		return new WP_REST_Response(
 			[
-				'user_id'         => $user_id,
 				'can_manage_meal' => $can_manage_meal,
 			]
 		);
