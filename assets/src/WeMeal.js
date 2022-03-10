@@ -13,11 +13,13 @@ import { useEffect, useState } from "@wordpress/element";
 
 const WeMeal = () => {
 	const [isMealManager, setIsMealManager] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect( () => {
 		Api.get( 'capability' )
 			.then( ( response ) => {
 				setIsMealManager( response.can_manage_meal );
+				setIsLoading( false );
 			});
 	}, [] );
 
@@ -41,7 +43,7 @@ const WeMeal = () => {
 					<Route
 						path="/reports"
 						element={
-							<PrivateRoute auth={isMealManager}>
+							<PrivateRoute auth={isMealManager} isLoading={isLoading}>
 								<Reports />
 							</PrivateRoute>
 						}
@@ -49,7 +51,7 @@ const WeMeal = () => {
 					<Route
 						path="/orders"
 						element={
-							<PrivateRoute auth={isMealManager}>
+							<PrivateRoute auth={isMealManager} isLoading={isLoading}>
 								<Orders />
 							</PrivateRoute>
 						}

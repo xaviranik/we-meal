@@ -2476,6 +2476,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-mt-3{
   margin-top: 0.75rem;
 }
+.wm-mr-2{
+  margin-right: 0.5rem;
+}
+.wm-mt-12{
+  margin-top: 3rem;
+}
+.wm-mt-24{
+  margin-top: 6rem;
+}
+.wm-inline{
+  display: inline;
+}
 .wm-flex{
   display: flex;
 }
@@ -2503,6 +2515,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-h-10{
   height: 2.5rem;
 }
+.wm-h-12{
+  height: 3rem;
+}
 .wm-w-32{
   width: 8rem;
 }
@@ -2524,6 +2539,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-w-16{
   width: 4rem;
 }
+.wm-w-8{
+  width: 2rem;
+}
+.wm-w-12{
+  width: 3rem;
+}
 @-webkit-keyframes wm-pulse{
   50%{
     opacity: .5;
@@ -2537,6 +2558,20 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-animate-pulse{
   -webkit-animation: wm-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
           animation: wm-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@-webkit-keyframes wm-spin{
+  to{
+    transform: rotate(360deg);
+  }
+}
+@keyframes wm-spin{
+  to{
+    transform: rotate(360deg);
+  }
+}
+.wm-animate-spin{
+  -webkit-animation: wm-spin 1s linear infinite;
+          animation: wm-spin 1s linear infinite;
 }
 .wm-cursor-pointer{
   cursor: pointer;
@@ -2600,6 +2635,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-bg-indigo-100{
   --tw-bg-opacity: 1;
   background-color: rgb(224 231 255 / var(--tw-bg-opacity));
+}
+.wm-fill-gray-600{
+  fill: #4b5563;
+}
+.wm-fill-indigo-600{
+  fill: #4f46e5;
 }
 .wm-p-4{
   padding: 1rem;
@@ -2698,6 +2739,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-text-gray-900{
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+.wm-text-gray-200{
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+.wm-text-gray-400{
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+.wm-text-gray-300{
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 .wm-shadow-sm{
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -2819,6 +2872,16 @@ input[type=text]:focus {
 .hover\:wm-border-slate-600:hover{
   --tw-border-opacity: 1;
   border-color: rgb(71 85 105 / var(--tw-border-opacity));
+}
+
+@media (prefers-color-scheme: dark){
+  .dark\:wm-fill-gray-300{
+    fill: #d1d5db;
+  }
+  .dark\:wm-text-gray-600{
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99 / var(--tw-text-opacity));
+  }
 }
 
 @media (min-width: 640px){
