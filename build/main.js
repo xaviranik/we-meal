@@ -13088,7 +13088,9 @@ const WeMeal = () => {
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     _api__WEBPACK_IMPORTED_MODULE_10__["default"].get('capability').then(response => {
       setIsMealManager(response.can_manage_meal);
-      setIsLoading(false);
+      setIsLoading(false); // eslint-disable-next-line no-console
+
+      console.log(response);
     });
   }, []);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.HashRouter, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_toastify__WEBPACK_IMPORTED_MODULE_7__.ToastContainer, {
@@ -13410,7 +13412,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const fetchEvents = (info, successCallback, failureCallback) => {
+const fetchEvents = (info, successCallback) => {
   _api__WEBPACK_IMPORTED_MODULE_4__["default"].get(`reports/user/meal-calendar?start_date=${info.startStr.substring(0, 10)}&end_date=${info.endStr.substring(0, 10)}`).then(response => {
     successCallback(Array.prototype.slice.call(response));
   });
@@ -13605,7 +13607,8 @@ const SetDailyMenu = () => {
     className: 'wm-mt-2'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_select_async__WEBPACK_IMPORTED_MODULE_3__["default"], {
     onChange: handleChange,
-    closeMenuOnSelect: false,
+    closeMenuOnSelect: false // eslint-disable-next-line jsx-a11y/no-autofocus
+    ,
     autoFocus: true,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search meal'),
     cacheOptions: true,
@@ -13994,7 +13997,7 @@ const Reports = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-grid wm-grid-cols-1 md:wm-grid-cols-2 wm-gap-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_StatCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Total Orders Today", 'we-meal'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total Orders Today', 'we-meal'),
     subtitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('current day', 'we-meals'),
     value: (overview === null || overview === void 0 ? void 0 : overview.total_order_count) && overview.total_order_count,
     icon: totalOrderIcon
