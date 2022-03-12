@@ -15,13 +15,20 @@ const WeMeal = () => {
 	const [isMealManager, setIsMealManager] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 
+	const checkCapability = () => {
+		if (isLoading) {
+			Api.get('capability').then((response) => {
+				setIsMealManager(response.can_manage_meal);
+				setIsLoading(false);
+			});
+		}
+	};
+
 	useEffect(() => {
-		Api.get('capability').then((response) => {
-			setIsMealManager(response.can_manage_meal);
+		checkCapability();
+		return () => {
 			setIsLoading(false);
-			// eslint-disable-next-line no-console
-			console.log(response);
-		});
+		};
 	}, []);
 
 	return (

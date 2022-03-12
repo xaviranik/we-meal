@@ -28,7 +28,14 @@ class Menu implements HookableInterface {
 	protected $menu_title;
 
 	/**
-	 * Menu page capability.
+	 * Menu page base capability.
+	 *
+	 * @var string
+	 */
+	protected $base_capability;
+
+	/**
+	 * Menu page base capability.
 	 *
 	 * @var string
 	 */
@@ -70,21 +77,22 @@ class Menu implements HookableInterface {
 	public function __construct( Capability $capability ) {
 		$capability->register_hooks();
 
-		$this->page_title = __( 'weMeal', 'we-meal' );
-		$this->menu_title = __( 'weMeal', 'we-meal' );
-		$this->capability = 'read';
-		$this->menu_slug  = 'we-meal';
-		$this->icon       = 'dashicons-food';
-		$this->position   = 57;
-		$this->submenus = [
+		$this->page_title      = __( 'weMeal', 'we-meal' );
+		$this->menu_title      = __( 'weMeal', 'we-meal' );
+		$this->base_capability = 'read';
+		$this->capability      = 'manage_meal';
+		$this->menu_slug       = 'we-meal';
+		$this->icon            = 'dashicons-food';
+		$this->position        = 57;
+		$this->submenus        = [
 			[
 				'title'      => __( 'Dashboard', 'we-meal' ),
-				'capability' => $this->capability,
+				'capability' => $this->base_capability,
 				'url'        => 'admin.php?page=' . $this->menu_slug . '#/dashboard',
 			],
 			[
 				'title'      => __( 'Orders', 'we-meal' ),
-				'capability' => 'manage_meal',
+				'capability' => $this->capability,
 				'url'        => 'admin.php?page=' . $this->menu_slug . '#/orders',
 			],
 			[
@@ -94,12 +102,12 @@ class Menu implements HookableInterface {
 			],
 			[
 				'title'      => __( 'All Meals', 'we-meal' ),
-				'capability' => 'manage_meal',
+				'capability' => $this->capability,
 				'url'        => 'edit.php?post_type=meal',
 			],
 			[
 				'title'      => __( 'Add Meal', 'we-meal' ),
-				'capability' => 'manage_meal',
+				'capability' => $this->capability,
 				'url'        => 'post-new.php?post_type=meal',
 			],
 		];
@@ -129,7 +137,7 @@ class Menu implements HookableInterface {
 		add_menu_page(
 			$this->page_title,
 			$this->menu_title,
-			$this->capability,
+			$this->base_capability,
 			$this->menu_slug,
 			[ $this, 'render_menu_page' ],
 			$this->icon,
