@@ -149,7 +149,7 @@ const Orders = () => {
 							{orders ? (
 								<div className={'wm-mt-3'}>
 									<div className="wm-overflow-x-auto -wm-mx-4">
-										<div className="wm-py-2 min-w-full">
+										<div className="min-w-full">
 											<div className="overflow-hidden sm:wm-rounded-lg">
 												<table className="wm-w-full">
 													<thead className="wm-bg-indigo-50 wm-rounded-md">
@@ -243,21 +243,21 @@ const Orders = () => {
 																}
 															)
 														) : (
-															<div
+															<tr
 																className={
 																	'wm-mt-6 wm-ml-4'
 																}
 															>
-																<p
+																<td
 																	className={
-																		'wm-text-sm'
+																		'wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap'
 																	}
 																>
 																	{__(
 																		'No Orders Found!'
 																	)}
-																</p>
-															</div>
+																</td>
+															</tr>
 														)}
 													</tbody>
 												</table>

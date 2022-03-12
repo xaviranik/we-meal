@@ -13963,7 +13963,7 @@ const Orders = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wm-overflow-x-auto -wm-mx-4"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wm-py-2 min-w-full"
+    className: "min-w-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "overflow-hidden sm:wm-rounded-lg"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
@@ -14002,10 +14002,10 @@ const Orders = () => {
     }, order.formatted_price), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
       className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
     }, order.created_at));
-  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
     className: 'wm-mt-6 wm-ml-4'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: 'wm-text-sm'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: 'wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap'
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No Orders Found!'))))))))) : tableLoadingSkeleton())))));
 };
 
