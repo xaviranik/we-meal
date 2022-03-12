@@ -11,6 +11,121 @@ const Orders = () => {
 		});
 	}, []);
 
+	const tableLoadingSkeleton = () => {
+		return (
+			<div className={'wm-mt-3'}>
+				<div className="wm-overflow-x-auto -wm-mx-4">
+					<div className="wm-py-2 min-w-full">
+						<div className="overflow-hidden sm:wm-rounded-lg">
+							<table className="wm-w-full">
+								<thead className="wm-bg-indigo-50 wm-rounded-md">
+									<tr className={'wm-uppercase'}>
+										<th
+											scope="col"
+											className="wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+										>
+											<div
+												className={
+													'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+												}
+											/>
+										</th>
+										<th
+											scope="col"
+											className="wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+										>
+											<div
+												className={
+													'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+												}
+											/>
+										</th>
+										<th
+											scope="col"
+											className="wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+										>
+											<div
+												className={
+													'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+												}
+											/>
+										</th>
+										<th
+											scope="col"
+											className="wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+										>
+											<div
+												className={
+													'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+												}
+											/>
+										</th>
+										<th
+											scope="col"
+											className="wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+										>
+											<div
+												className={
+													'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+												}
+											/>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									{[...Array(10)].map((_, i) => {
+										return (
+											<tr
+												key={i}
+												className="wm-bg-white wm-border-b"
+											>
+												<td className="wm-py-4 wm-px-6 wm-text-md wm-font-medium wm-text-gray-900 wm-whitespace-nowrap">
+													<div
+														className={
+															'wm-h-3 wm-w-24 wm-bg-slate-200 wm-rounded'
+														}
+													/>
+												</td>
+												<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
+													<div
+														className={
+															'wm-h-3 wm-w-24 wm-bg-slate-200 wm-rounded'
+														}
+													/>
+												</td>
+												<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
+													<div
+														className={
+															'wm-h-3 wm-w-24 wm-bg-slate-200 wm-rounded'
+														}
+													/>
+												</td>
+												<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
+													<div
+														className={
+															'wm-h-3 wm-w-24 wm-bg-slate-200 wm-rounded'
+														}
+													/>
+												</td>
+												<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
+													<div
+														className={
+															'wm-h-3 wm-w-24 wm-bg-slate-200 wm-rounded'
+														}
+													/>
+												</td>
+											</tr>
+										);
+									})}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	};
+
 	return (
 		<>
 			<div className={'wm-container wm-mx-auto wm-px-6 wm-py-4'}>
@@ -31,7 +146,7 @@ const Orders = () => {
 								</h1>
 							</div>
 
-							{orders && (
+							{orders ? (
 								<div className={'wm-mt-3'}>
 									<div className="wm-overflow-x-auto -wm-mx-4">
 										<div className="wm-py-2 min-w-full">
@@ -88,48 +203,70 @@ const Orders = () => {
 														</tr>
 													</thead>
 													<tbody>
-														{orders.map((order) => {
-															return (
-																<tr
-																	key={
-																		order.id
+														{orders.length > 0 ? (
+															orders.map(
+																(order) => {
+																	return (
+																		<tr
+																			key={
+																				order.id
+																			}
+																			className="wm-bg-white wm-border-b"
+																		>
+																			<td className="wm-py-4 wm-px-6 wm-text-md wm-font-medium wm-text-gray-900 wm-whitespace-nowrap">
+																				{
+																					order.id
+																				}
+																			</td>
+																			<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
+																				{
+																					order.user_name
+																				}
+																			</td>
+																			<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
+																				{
+																					order.meal_name
+																				}
+																			</td>
+																			<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
+																				{
+																					order.formatted_price
+																				}
+																			</td>
+																			<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
+																				{
+																					order.created_at
+																				}
+																			</td>
+																		</tr>
+																	);
+																}
+															)
+														) : (
+															<div
+																className={
+																	'wm-mt-6 wm-ml-4'
+																}
+															>
+																<p
+																	className={
+																		'wm-text-sm'
 																	}
-																	className="wm-bg-white wm-border-b"
 																>
-																	<td className="wm-py-4 wm-px-6 wm-text-md wm-font-medium wm-text-gray-900 wm-whitespace-nowrap">
-																		{
-																			order.id
-																		}
-																	</td>
-																	<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
-																		{
-																			order.user_name
-																		}
-																	</td>
-																	<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
-																		{
-																			order.meal_name
-																		}
-																	</td>
-																	<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
-																		{
-																			order.formatted_price
-																		}
-																	</td>
-																	<td className="wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap">
-																		{
-																			order.created_at
-																		}
-																	</td>
-																</tr>
-															);
-														})}
+																	{__(
+																		'No Orders Found!'
+																	)}
+																</p>
+															</div>
+														)}
 													</tbody>
 												</table>
 											</div>
 										</div>
 									</div>
 								</div>
+							) : (
+								tableLoadingSkeleton()
 							)}
 						</div>
 					</div>

@@ -2482,6 +2482,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-mt-3{
   margin-top: 0.75rem;
 }
+.wm-ml-4{
+  margin-left: 1rem;
+}
 .wm-inline{
   display: inline;
 }
@@ -2514,6 +2517,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-h-10{
   height: 2.5rem;
+}
+.wm-h-3{
+  height: 0.75rem;
 }
 .wm-w-12{
   width: 3rem;
@@ -2695,6 +2701,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-text-6xl{
   font-size: 3.75rem;
   line-height: 1;
+}
+.wm-text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 .wm-font-semibold{
   font-weight: 600;

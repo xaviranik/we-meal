@@ -66,13 +66,12 @@ const DailyMenu = () => {
 					{__('Place Order', 'we-meal')}
 				</button>
 			);
-		} else {
-			return (
-				<button className="wm-button-primary wm-disabled">
-					{__('Order Placed', 'we-meal')}
-				</button>
-			);
 		}
+		return (
+			<button className="wm-button-primary wm-disabled">
+				{__('Order Placed', 'we-meal')}
+			</button>
+		);
 	};
 
 	const mealMenuCardSkeleton = () => {

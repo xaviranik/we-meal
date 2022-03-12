@@ -40,8 +40,6 @@ class Installer {
 			`created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 			`updated_at` timestamp NULL DEFAULT NULL,
 			PRIMARY KEY (`id`)
-			KEY `created_at` (`created_at`)
-        	KEY `user_id_created_at` (`user_id`,`created_at`)
 		) {$charset_collate};";
 
 		dbDelta( $table );

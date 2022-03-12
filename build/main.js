@@ -13301,11 +13301,11 @@ const DailyMenu = () => {
         className: `wm-button-primary ${selectedMealMenu ? '' : 'wm-disabled'}`,
         onClick: handlePlaceOrderClick
       }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Place Order', 'we-meal'));
-    } else {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-        className: "wm-button-primary wm-disabled"
-      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Order Placed', 'we-meal'));
     }
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      className: "wm-button-primary wm-disabled"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Order Placed', 'we-meal'));
   };
 
   const mealMenuCardSkeleton = () => {
@@ -13412,6 +13412,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const fetchEvents = (info, successCallback) => {
   _api__WEBPACK_IMPORTED_MODULE_4__["default"].get(`reports/user/meal-calendar?start_date=${info.startStr.substring(0, 10)}&end_date=${info.endStr.substring(0, 10)}`).then(response => {
     successCallback(Array.prototype.slice.call(response));
@@ -13419,16 +13420,31 @@ const fetchEvents = (info, successCallback) => {
 };
 
 const MealCalendar = () => {
+  const [hasLoading, setHasLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+
+  const loading = isLoading => {
+    setHasLoading(isLoading);
+  };
+
+  const loadingContent = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: 'wm-flex-col wm-items-center wm-justify-center wm-animate-pulse'
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: 'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+    })));
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-card'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
+  }, hasLoading ? loadingContent() : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     className: 'wm-text-xl wm-font-semibold'
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Meal Calendar', 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-mt-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_fullcalendar_react__WEBPACK_IMPORTED_MODULE_2__["default"], {
     plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_3__["default"]],
     initialView: "dayGridMonth",
-    events: fetchEvents
+    events: fetchEvents,
+    loading: loading
   })));
 };
 
@@ -13861,6 +13877,75 @@ const Orders = () => {
       setOrders(response);
     });
   }, []);
+
+  const tableLoadingSkeleton = () => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: 'wm-mt-3'
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "wm-overflow-x-auto -wm-mx-4"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "wm-py-2 min-w-full"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "overflow-hidden sm:wm-rounded-lg"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
+      className: "wm-w-full"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("thead", {
+      className: "wm-bg-indigo-50 wm-rounded-md"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+      className: 'wm-uppercase'
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+      scope: "col",
+      className: "wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: 'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+      scope: "col",
+      className: "wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: 'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+      scope: "col",
+      className: "wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: 'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+      scope: "col",
+      className: "wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: 'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+      scope: "col",
+      className: "wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: 'wm-h-5 wm-w-32 wm-bg-slate-200 wm-rounded'
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, [...Array(10)].map((_, i) => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+        key: i,
+        className: "wm-bg-white wm-border-b"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+        className: "wm-py-4 wm-px-6 wm-text-md wm-font-medium wm-text-gray-900 wm-whitespace-nowrap"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: 'wm-h-3 wm-w-24 wm-bg-slate-200 wm-rounded'
+      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+        className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: 'wm-h-3 wm-w-24 wm-bg-slate-200 wm-rounded'
+      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+        className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: 'wm-h-3 wm-w-24 wm-bg-slate-200 wm-rounded'
+      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+        className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: 'wm-h-3 wm-w-24 wm-bg-slate-200 wm-rounded'
+      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+        className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: 'wm-h-3 wm-w-24 wm-bg-slate-200 wm-rounded'
+      })));
+    })))))));
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-container wm-mx-auto wm-px-6 wm-py-4'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -13873,7 +13958,7 @@ const Orders = () => {
     className: 'wm-flex wm-items-center wm-justify-between'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     className: 'wm-text-xl wm-font-semibold'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Today's Orders", 'we-meal'))), orders && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Today's Orders", 'we-meal'))), orders ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'wm-mt-3'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wm-overflow-x-auto -wm-mx-4"
@@ -13902,7 +13987,7 @@ const Orders = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Price', 'we-meal')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
     scope: "col",
     className: "wm-py-3 wm-px-6 wm-text-md wm-font-medium wm-tracking-wider wm-text-left wm-text-gray-900"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'we-meal')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, orders.map(order => {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'we-meal')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, orders.length > 0 ? orders.map(order => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
       key: order.id,
       className: "wm-bg-white wm-border-b"
@@ -13917,7 +14002,11 @@ const Orders = () => {
     }, order.formatted_price), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
       className: "wm-py-4 wm-px-6 wm-text-md wm-text-gray-900 wm-whitespace-nowrap"
     }, order.created_at));
-  }))))))))))));
+  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'wm-mt-6 wm-ml-4'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: 'wm-text-sm'
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No Orders Found!'))))))))) : tableLoadingSkeleton())))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Orders);
