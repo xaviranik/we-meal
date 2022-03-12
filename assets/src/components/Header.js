@@ -2,8 +2,9 @@ import { __ } from '@wordpress/i18n';
 import ModalPopper from './ModalPopper';
 import { useState } from '@wordpress/element';
 import SetDailyMenu from './SetDailyMenu';
+import PrivateComponent from '../auth/PrivateComponent';
 
-const Header = () => {
+const Header = ({ auth }) => {
 	const [open, setOpen] = useState(false);
 
 	const onOpenModal = () => setOpen(true);
@@ -22,12 +23,14 @@ const Header = () => {
 					}
 				>
 					<h1 className={'wm-text-xl wm-font-medium'}>weMeal</h1>
-					<button
-						onClick={onOpenModal}
-						className={`wm-button-outline`}
-					>
-						{__('Set Daily Menu', 'we-meal')}
-					</button>
+					<PrivateComponent auth={auth}>
+						<button
+							onClick={onOpenModal}
+							className={`wm-button-outline`}
+						>
+							{__('Set Daily Menu', 'we-meal')}
+						</button>
+					</PrivateComponent>
 				</div>
 			</div>
 

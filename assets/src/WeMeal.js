@@ -33,7 +33,7 @@ const WeMeal = () => {
 
 	return (
 		<>
-			<Header />
+			<Header auth={isMealManager} />
 			<Router>
 				<ToastContainer
 					position="bottom-right"

@@ -13101,7 +13101,9 @@ const WeMeal = () => {
       setIsLoading(false);
     };
   }, []);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.HashRouter, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_toastify__WEBPACK_IMPORTED_MODULE_7__.ToastContainer, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    auth: isMealManager
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.HashRouter, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_toastify__WEBPACK_IMPORTED_MODULE_7__.ToastContainer, {
     position: "bottom-right",
     autoClose: 4000,
     hideProgressBar: false,
@@ -13179,6 +13181,26 @@ const Api = {
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (Api);
+
+/***/ }),
+
+/***/ "./assets/src/auth/PrivateComponent.js":
+/*!*********************************************!*\
+  !*** ./assets/src/auth/PrivateComponent.js ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const PrivateRoute = _ref => {
+  let {
+    children,
+    auth
+  } = _ref;
+  return auth ? children : null;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PrivateRoute);
 
 /***/ }),
 
@@ -13363,13 +13385,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _ModalPopper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ModalPopper */ "./assets/src/components/ModalPopper.js");
 /* harmony import */ var _SetDailyMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SetDailyMenu */ "./assets/src/components/SetDailyMenu.js");
+/* harmony import */ var _auth_PrivateComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../auth/PrivateComponent */ "./assets/src/auth/PrivateComponent.js");
 
 
 
 
 
 
-const Header = () => {
+
+const Header = _ref => {
+  let {
+    auth
+  } = _ref;
   const [open, setOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
 
   const onOpenModal = () => setOpen(true);
@@ -13384,10 +13411,12 @@ const Header = () => {
     className: 'wm-flex wm-items-center wm-justify-between md:wm-mx-8 wm-mx-6'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     className: 'wm-text-xl wm-font-medium'
-  }, "weMeal"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, "weMeal"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_auth_PrivateComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    auth: auth
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: onOpenModal,
     className: `wm-button-outline`
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Set Daily Menu', 'we-meal')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ModalPopper__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Set Daily Menu', 'we-meal'))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ModalPopper__WEBPACK_IMPORTED_MODULE_2__["default"], {
     openModal: open,
     closeModal: onCloseModal,
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Set Daily Menu', 'we-meal'),
