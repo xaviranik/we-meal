@@ -2461,11 +2461,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-mr-2{
   margin-right: 0.5rem;
 }
-.wm-mt-2{
-  margin-top: 0.5rem;
-}
 .wm-mt-4{
   margin-top: 1rem;
+}
+.wm-mt-2{
+  margin-top: 0.5rem;
 }
 .wm-mt-6{
   margin-top: 1.5rem;
@@ -2500,14 +2500,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-h-5{
   height: 1.25rem;
 }
-.wm-h-2{
-  height: 0.5rem;
-}
-.wm-h-10{
-  height: 2.5rem;
-}
 .wm-h-8{
   height: 2rem;
+}
+.wm-h-2{
+  height: 0.5rem;
 }
 .wm-h-16{
   height: 4rem;
@@ -2518,6 +2515,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .wm-h-7{
   height: 1.75rem;
 }
+.wm-h-10{
+  height: 2.5rem;
+}
 .wm-h-3{
   height: 0.75rem;
 }
@@ -2526,9 +2526,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-w-32{
   width: 8rem;
-}
-.wm-w-16{
-  width: 4rem;
 }
 .wm-w-24{
   width: 6rem;
@@ -2544,6 +2541,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .wm-w-7{
   width: 1.75rem;
+}
+.wm-w-16{
+  width: 4rem;
 }
 @-webkit-keyframes wm-spin{
   to{

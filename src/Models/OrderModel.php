@@ -187,7 +187,7 @@ class OrderModel {
 	 *
 	 * @return OrderModel
 	 */
-	public function set_updated_at( string $updated_at  ): OrderModel {
+	public function set_updated_at( string $updated_at ): OrderModel {
 		$this->updated_at = $updated_at ?? '';
 
 		return $this;
