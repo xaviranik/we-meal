@@ -11,6 +11,7 @@ import './style/main.scss';
 import Api from './api';
 import { useEffect, useMemo, useState } from '@wordpress/element';
 import { AuthContext } from './context/AuthContext';
+import { ModalContext } from './context/ModalContext';
 
 const WeMeal = () => {
 	const [isMealManager, setIsMealManager] = useState(false);
@@ -20,6 +21,13 @@ const WeMeal = () => {
 	);
 
 	const [isLoading, setIsLoading] = useState(true);
+
+	const [openModal, setOpenModal] = useState(false);
+
+	const modal = useMemo(
+		() => ({ openModal, setOpenModal }),
+		[openModal, setOpenModal]
+	);
 
 	const checkCapability = () => {
 		if (isLoading) {
@@ -40,46 +48,48 @@ const WeMeal = () => {
 	return (
 		<>
 			<AuthContext.Provider value={auth}>
-				<Header />
-				<Router>
-					<ToastContainer
-						position="bottom-right"
-						autoClose={4000}
-						hideProgressBar={false}
-						newestOnTop={false}
-						closeOnClick
-						rtl={false}
-						pauseOnFocusLoss
-						draggable
-						pauseOnHover
-					/>
-					<Routes>
-						<Route path="/dashboard" element={<Dashboard />} />
-						<Route
-							path="/reports"
-							element={
-								<PrivateRoute
-									auth={isMealManager}
-									isLoading={isLoading}
-								>
-									<Reports />
-								</PrivateRoute>
-							}
+				<ModalContext.Provider value={modal}>
+					<Header />
+					<Router>
+						<ToastContainer
+							position="bottom-right"
+							autoClose={4000}
+							hideProgressBar={true}
+							newestOnTop={false}
+							closeOnClick
+							rtl={false}
+							pauseOnFocusLoss
+							draggable
+							pauseOnHover
 						/>
-						<Route
-							path="/orders"
-							element={
-								<PrivateRoute
-									auth={isMealManager}
-									isLoading={isLoading}
-								>
-									<Orders />
-								</PrivateRoute>
-							}
-						/>
-						<Route path="/404" element={<NotFound404 />} />
-					</Routes>
-				</Router>
+						<Routes>
+							<Route path="/dashboard" element={<Dashboard />} />
+							<Route
+								path="/reports"
+								element={
+									<PrivateRoute
+										auth={isMealManager}
+										isLoading={isLoading}
+									>
+										<Reports />
+									</PrivateRoute>
+								}
+							/>
+							<Route
+								path="/orders"
+								element={
+									<PrivateRoute
+										auth={isMealManager}
+										isLoading={isLoading}
+									>
+										<Orders />
+									</PrivateRoute>
+								}
+							/>
+							<Route path="/404" element={<NotFound404 />} />
+						</Routes>
+					</Router>
+				</ModalContext.Provider>
 			</AuthContext.Provider>
 		</>
 	);

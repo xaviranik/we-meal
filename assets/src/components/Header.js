@@ -1,17 +1,17 @@
 import { __ } from '@wordpress/i18n';
 import ModalPopper from './ModalPopper';
-import { useContext, useState } from '@wordpress/element';
+import { useContext } from '@wordpress/element';
 import SetDailyMenu from './SetDailyMenu';
 import PrivateComponent from '../auth/PrivateComponent';
 import { AuthContext } from '../context/AuthContext';
+import { ModalContext } from '../context/ModalContext';
 
 const Header = () => {
-	const [open, setOpen] = useState(false);
-
 	const { isMealManager } = useContext(AuthContext);
+	const { openModal, setOpenModal } = useContext(ModalContext);
 
-	const onOpenModal = () => setOpen(true);
-	const onCloseModal = () => setOpen(false);
+	const onOpenModal = () => setOpenModal(true);
+	const onCloseModal = () => setOpenModal(false);
 
 	return (
 		<div
@@ -38,7 +38,7 @@ const Header = () => {
 			</div>
 
 			<ModalPopper
-				openModal={open}
+				openModal={openModal}
 				closeModal={onCloseModal}
 				title={__('Set Daily Menu', 'we-meal')}
 				content={<SetDailyMenu />}
