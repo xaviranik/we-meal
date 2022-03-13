@@ -1,11 +1,14 @@
 import { __ } from '@wordpress/i18n';
 import ModalPopper from './ModalPopper';
-import { useState } from '@wordpress/element';
+import { useContext, useState } from '@wordpress/element';
 import SetDailyMenu from './SetDailyMenu';
 import PrivateComponent from '../auth/PrivateComponent';
+import { AuthContext } from '../context/AuthContext';
 
-const Header = ({ auth }) => {
+const Header = () => {
 	const [open, setOpen] = useState(false);
+
+	const { isMealManager } = useContext(AuthContext);
 
 	const onOpenModal = () => setOpen(true);
 	const onCloseModal = () => setOpen(false);
@@ -23,7 +26,7 @@ const Header = ({ auth }) => {
 					}
 				>
 					<h1 className={'wm-text-xl wm-font-medium'}>weMeal</h1>
-					<PrivateComponent auth={auth}>
+					<PrivateComponent auth={isMealManager}>
 						<button
 							onClick={onOpenModal}
 							className={`wm-button-outline`}

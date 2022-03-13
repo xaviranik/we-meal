@@ -9,10 +9,16 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style/main.scss';
 import Api from './api';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useMemo, useState } from '@wordpress/element';
+import { AuthContext } from './context/AuthContext';
 
 const WeMeal = () => {
 	const [isMealManager, setIsMealManager] = useState(false);
+	const auth = useMemo(
+		() => ({ isMealManager, setIsMealManager }),
+		[isMealManager, setIsMealManager]
+	);
+
 	const [isLoading, setIsLoading] = useState(true);
 
 	const checkCapability = () => {
@@ -33,46 +39,48 @@ const WeMeal = () => {
 
 	return (
 		<>
-			<Header auth={isMealManager} />
-			<Router>
-				<ToastContainer
-					position="bottom-right"
-					autoClose={4000}
-					hideProgressBar={false}
-					newestOnTop={false}
-					closeOnClick
-					rtl={false}
-					pauseOnFocusLoss
-					draggable
-					pauseOnHover
-				/>
-				<Routes>
-					<Route path="/dashboard" element={<Dashboard />} />
-					<Route
-						path="/reports"
-						element={
-							<PrivateRoute
-								auth={isMealManager}
-								isLoading={isLoading}
-							>
-								<Reports />
-							</PrivateRoute>
-						}
+			<AuthContext.Provider value={auth}>
+				<Header />
+				<Router>
+					<ToastContainer
+						position="bottom-right"
+						autoClose={4000}
+						hideProgressBar={false}
+						newestOnTop={false}
+						closeOnClick
+						rtl={false}
+						pauseOnFocusLoss
+						draggable
+						pauseOnHover
 					/>
-					<Route
-						path="/orders"
-						element={
-							<PrivateRoute
-								auth={isMealManager}
-								isLoading={isLoading}
-							>
-								<Orders />
-							</PrivateRoute>
-						}
-					/>
-					<Route path="/404" element={<NotFound404 />} />
-				</Routes>
-			</Router>
+					<Routes>
+						<Route path="/dashboard" element={<Dashboard />} />
+						<Route
+							path="/reports"
+							element={
+								<PrivateRoute
+									auth={isMealManager}
+									isLoading={isLoading}
+								>
+									<Reports />
+								</PrivateRoute>
+							}
+						/>
+						<Route
+							path="/orders"
+							element={
+								<PrivateRoute
+									auth={isMealManager}
+									isLoading={isLoading}
+								>
+									<Orders />
+								</PrivateRoute>
+							}
+						/>
+						<Route path="/404" element={<NotFound404 />} />
+					</Routes>
+				</Router>
+			</AuthContext.Provider>
 		</>
 	);
 };
