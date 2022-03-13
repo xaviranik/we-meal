@@ -13307,8 +13307,6 @@ const DailyMenu = () => {
         if (response.success) {
           setSelectedMealMenu(null);
           react_toastify__WEBPACK_IMPORTED_MODULE_3__.toast.success(response.message);
-        } else {
-          console.log(response.message);
         }
       });
     }

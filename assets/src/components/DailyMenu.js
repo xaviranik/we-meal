@@ -34,8 +34,6 @@ const DailyMenu = () => {
 				if (response.success) {
 					setSelectedMealMenu(null);
 					toast.success(response.message);
-				} else {
-					console.log(response.message);
 				}
 			});
 		}

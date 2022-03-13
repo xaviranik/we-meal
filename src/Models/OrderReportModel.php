@@ -157,7 +157,8 @@ class OrderReportModel {
 			)
 		);
 
-		$this->order_stat_model->set_user_id( $this->get_user_id() )
+		$this->order_stat_model
+			->set_user_id( $this->get_user_id() )
 		    ->set_total_price( $result->total_price ?? 0 )
 		    ->set_total_orders( $result->total_orders );
 
@@ -207,7 +208,7 @@ class OrderReportModel {
 			$total_order_count += (int) $result->order_count;
 		}
 
-		$overview['total_order_count'] = $total_order_count;
+		$overview['total_order_count'] = (string) $total_order_count;
 
 		return $overview;
 	}
